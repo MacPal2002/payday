@@ -4,7 +4,7 @@
     $response = array(
         'success' => false, // Flaga sukcesu - początkowo ustawiona na false
         'error' => array(null, null), // Tablica do przechowywania komunikatu błędu i kodu błędu
-        'data' => null, // Dane wynikowe - początkowo brak danych
+        'data' => [null], // Dane wynikowe - początkowo brak danych
     );
 
 

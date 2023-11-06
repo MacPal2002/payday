@@ -6,7 +6,7 @@
             // Zapytanie SQL
             'sql' => null,
             // Parametry do zapytania SQL
-            'parameters' => null
+            'parameters' => []
         ),
     );
 
@@ -447,7 +447,7 @@
 
         // Zapytanie SQL do pobierania użytkowników na podstawie roli (lub wszystkich użytkowników, jeśli 'all').
         $sql = "SELECT * FROM users";
-        $parameters = null;
+        $parameters = [];
 
         if ($userRole != 'all') {
             $sql .= " WHERE userRole = :userRole";

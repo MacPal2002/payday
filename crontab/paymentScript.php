@@ -7,7 +7,7 @@
 
     $today = date("Y-m-d");
     echo "---------------------------------------\n";
-    echo 'Rozpoczynanie aktualizacji płatności na dzień: ' . $today;
+    echo 'Rozpoczynanie aktualizacji płatności na dzień: ' . $today . '\n';
 
     // Pobieranie wszystkich użytkowników
     $allUsers = getUsers('all');
@@ -55,7 +55,7 @@
                                     processBalanceUpdate($idUser, 'bill', $idSubscription);
 
                                 } else{
-                                    deactivateUserSubs($id, 'suspend')
+                                    deactivateUserSubs($id, 'suspend');
                                     echo "Niepowodzenie. Brak wystarczających środków na koncie użytkownika $username do opłacenia subskrypcji typu: $vodType\n";
                                 }
                             }
@@ -76,17 +76,9 @@
         echo "Błąd podczas pobierania użytkowników: " . $allUsers['error'] . "\n";
     }
 
-    echo "Koniec aktualizcji płatności na dzień: " . $today;
+    echo "Koniec aktualizacji płatności na dzień: \n " . $today;
     echo "---------------------------------------\n";
 
 
         
-
-
-
-
-
-
-
-
 ?>
