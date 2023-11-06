@@ -228,8 +228,13 @@
             // W przypadku sukcesu, ustaw flagę sukcesu.
             $response['success'] = true;
         } else {
-            // W przypadku błędu, dostosuj komunikat błędu.
-            $response['error'] = "Unable to subscribe the user.";
+
+            if ($queryResult['error'][1] == 23000) {
+                $response['error'] = "That subscription is already assigned to this user.";
+            } else{
+                // W przypadku błędu, dostosuj komunikat błędu.
+                $response['error'] = "Unable to subscribe the user.";
+            }
         }
 
         // Zwróć odpowiedź.
@@ -244,12 +249,16 @@
      * @param int $idSubscription - Identyfikator subskrypcji do dezaktywacji.
      *
      */
-    function deactivateUserSubs($idSubscription, $status='inactive') {
+    function deactivateUserSubs($idSubscription, $status = 'inactive') {
         // Zapytanie SQL do dezaktywacji subskrypcji na podstawie identyfikatora subskrypcji.
-        if($status = 'inactive'){
-            $sql = "UPDATE subscriptions SET status = 'inactive', cancelDate = CURRENT_DATE() WHERE id = :idSubscription";
+        if($status == 'inactive'){
+            $sql = "UPDATE subscriptions SET status = 'inactive', lastCancelDate = CURRENT_DATE() WHERE id = :idSubscription";
         }   else if($status == 'suspend'){
-            $sql = "UPDATE subscriptions SET status = 'suspend', cancelDate = CURRENT_DATE() WHERE id = :idSubscription";
+            $sql = "UPDATE subscriptions SET status = 'suspend', lastCancelDate = CURRENT_DATE() WHERE id = :idSubscription";
+        } else{
+
+            $response[error] = 'Invalid status argument';
+            return $response;
         }
 
         $sqlArray = $GLOBALS['sqlArray'];
@@ -264,8 +273,6 @@
         // Wykonanie zapytania i uzyskanie wyniku.
         $queryResult = query($sqlArray);
 
-        // Inicjalizacja odpowiedzi.
-        $response = $GLOBALS['response'];
 
         if ($queryResult['success']) {
             // W przypadku sukcesu, ustaw flagę sukcesu.
@@ -351,10 +358,10 @@
      *
      * @param int $idUser - ID użytkownika.
      * @param string $operation - dozwolone wartości bill oraz topup.
-     * @param int $variable - z zależności od parametru $operation jest to $idSubscription albo $amount.
+     * @param int $variable - z zależności od parametru $operation jest to tablica($idSubscription,$billingDate) albo $amount.
      *
      */                                         
-    //                                       bill ord topup
+    //                                       bill or topup
     function processBalanceUpdate($idUser, $operaction = NULL, $variable = NULL) {
         // pobiera z configu co ile odnawia się subskrypcja.
         $monthInterval = $GLOBALS['monthInterval'];   
@@ -368,8 +375,16 @@
         $sqlArray[0]['parameters'] = [':amount' => NULL,  ':idUser' => $idUser];
 
         if ($operaction == 'bill' && $variable != NULL) {
-            
-            $idSubscription = $variable; 
+
+            if (!is_array($variable)) {
+                $response['error'] = "With status 'bill' - variable must be array.";
+                return $response;
+
+            }
+
+            $idSubscription = $variable[0];
+            $billingDate = $variable[1];
+
             
             $userIdSubs = getAllUserSubs($idUser)['data']['subscriptions'];
             foreach ($userIdSubs as $userIdSub){
@@ -378,8 +393,8 @@
                     $sqlArray[0]['parameters'][':amount'] = -$userIdSub['price'];
                     $sqlArray[1] = $sqlArray[0];
                     // Aktualizacja daty odnowienia subskrypcji
-                    $sqlArray[1]['sql'] = 'INSERT INTO bills (idSubscription, paymentDate, nextBillingDate) VALUES (:idSubscription, CURRENT_DATE(), DATE_ADD(CURRENT_DATE(), INTERVAL :monthInterval MONTH))';
-                    $sqlArray[1]['parameters'] = [':idSubscription' => $idSubscription, ':monthInterval' => $monthInterval];
+                    $sqlArray[1]['sql'] = 'INSERT INTO bills (idSubscription, paymentDate, billingDate, nextBillingDate) VALUES (:idSubscription, CURRENT_DATE(), :billingDate, DATE_ADD(:billingDate, INTERVAL :monthInterval MONTH))';
+                    $sqlArray[1]['parameters'] = [':idSubscription' => $idSubscription, ':monthInterval' => $monthInterval, ':billingDate' => $billingDate];
                     break;
                 }
                       
@@ -487,7 +502,11 @@
         $response = $GLOBALS['response'];
 
         // Zapytanie SQL do pobierania wszystkich subskrypcji użytkownika na podstawie jego identyfikatora.
-        $sql = "SELECT s.*, MAX(b.nextBillingDate) AS nextBillingDate
+        $sql = "SELECT s.*,
+                CASE 
+                    WHEN b.nextBillingDate IS NULL THEN subscribeDate
+                    ELSE MAX(b.nextBillingDate)
+                END AS nextBillingDate
                 FROM subscriptions s
                 LEFT JOIN bills b ON s.id = b.idSubscription
                 WHERE idUser = :idUser AND s.status = :status

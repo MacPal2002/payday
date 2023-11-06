@@ -6,7 +6,7 @@
     $dbName = 'payday2';
     
     $allowedDebt = -20;
-    $monthInterval = 1
+    $monthInterval = 1;
 
 
 ?>
