@@ -204,7 +204,7 @@
      * Funkcja aktywacji subskrypcji użytkownika
      *
      * @param int $idUser - Identyfikator użytkownika.
-     * @param string $vodType - Rodzaj subskrypcji (np. 'basic', 'premium', itp.).
+     * @param string $vodType - Rodzaj subskrypcji VOD.
      * @param float $price - Cena subskrypcji.
      *
      */
@@ -257,7 +257,7 @@
             $sql = "UPDATE subscriptions SET status = 'suspend', lastCancelDate = CURRENT_DATE() WHERE id = :idSubscription";
         } else{
 
-            $response[error] = 'Invalid status argument';
+            $response['error'] = 'Invalid status argument';
             return $response;
         }
 
@@ -358,7 +358,7 @@
      *
      * @param int $idUser - ID użytkownika.
      * @param string $operation - dozwolone wartości bill oraz topup.
-     * @param int $variable - z zależności od parametru $operation jest to tablica($idSubscription,$billingDate) albo $amount.
+     * @param mixed $variable - z zależności od parametru $operation jest to tablica($idSubscription,$billingDate) albo $amount.
      *
      */                                         
     //                                       bill or topup
@@ -502,15 +502,16 @@
         $response = $GLOBALS['response'];
 
         // Zapytanie SQL do pobierania wszystkich subskrypcji użytkownika na podstawie jego identyfikatora.
-        $sql = "SELECT s.*,
-                CASE 
-                    WHEN b.nextBillingDate IS NULL THEN subscribeDate
-                    ELSE MAX(b.nextBillingDate)
-                END AS nextBillingDate
+        $sql = "SELECT s.*, 
+                        CASE
+                            WHEN MAX(b.nextBillingDate) IS NOT NULL AND MAX(b.nextBillingDate) > s.subscribeDate THEN MAX(b.nextBillingDate)
+                            ELSE s.subscribeDate
+                        END AS nextBillingDate
                 FROM subscriptions s
                 LEFT JOIN bills b ON s.id = b.idSubscription
                 WHERE idUser = :idUser AND s.status = :status
-                GROUP BY s.vodType";
+                GROUP BY s.vodType
+        ";
 
         $sqlArray[0]['sql'] = $sql;
         $sqlArray[0]['parameters'] = [':idUser' => $idUser, ':status' => $status,];

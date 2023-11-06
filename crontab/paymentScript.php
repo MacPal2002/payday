@@ -56,7 +56,7 @@
                                 
 
                                 if ($userBalance['success'] && $userBalance['data']['balance'] >= $price) {
-                                    echo "Powodzenie. Pobrano $price zł od użytkownika $username za subskrypcję: $vodType\n";
+                                    echo "[$vodType] Powodzenie. Pobrano $price zł od użytkownika $username za subskrypcję.\n";
 
                                     // Aktualizacja stanu konta użytkownika po pobraniu płatności
                                     processBalanceUpdate($idUser, 'bill', [$idSubscription, $nextBillingDate]);
@@ -64,18 +64,18 @@
 
                                 } else if($userBalance['success'] && $userBalance['data']['balance'] < $price){
                                     if ($userBalance['data']['balance'] - $price > $allowedDebt){
-                                        echo "Warunek! Dozwolony debet. Pobrano $price zł od użytkownika $username za subskrypcję: $vodType\n";
+                                        echo "[$vodType] Warunek! Dozwolony debet. Pobrano $price zł od użytkownika $username za subskrypcję.\n";
                                         // Tu trzeba zrobić obsługę powiadomień email.
 
                                         processBalanceUpdate($idUser, 'bill', [$idSubscription, $nextBillingDate]);
                                 
                                     } else{
                                         deactivateUserSubs($idSubscription, 'suspend');
-                                        echo "Niepowodzenie. Brak wystarczających środków na koncie użytkownika $username do opłacenia subskrypcji: $vodType\n";
+                                        echo "[$vodType] Niepowodzenie. Zawiesznie subskrypcji. Brak wystarczających środków na koncie użytkownika $username do opłacenia subskrypcji.\n";
                                     }
                                 }
                             } else {
-                                echo "Data następnej płatności dla subskrypcji typu: $vodType jeszcze nie nadeszła.\n";
+                                echo "[$vodType] Data następnej płatności dla subskrypcji jeszcze nie nadeszła.\n";
                             }
                         }
                     } else {
