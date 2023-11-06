@@ -80,7 +80,7 @@
         $response = $GLOBALS['response'];
 
         // Zapytanie SQL do pobierania danych użytkownika na podstawie nazwy użytkownika.
-        $sqlArray[0]['sql'] = 'SELECT id, username, password, userRole FROM users WHERE username = :username)';
+        $sqlArray[0]['sql'] = 'SELECT id, username, password, userRole FROM users WHERE username = :username';
         // Parametry do zapytania SQL, w tym nazwa użytkownika.
         $sqlArray[0]['parameters'] = [':username' => $username];
         
