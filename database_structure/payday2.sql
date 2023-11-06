@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Lis 2023, 22:11
+-- Czas generowania: 06 Lis 2023, 18:35
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.0.25
 
@@ -33,6 +33,14 @@ CREATE TABLE `balances` (
   `balance` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Zrzut danych tabeli `balances`
+--
+
+INSERT INTO `balances` (`id`, `idUser`, `balance`) VALUES
+(6, 38, '-19.00'),
+(7, 68, '-12.00');
+
 -- --------------------------------------------------------
 
 --
@@ -40,10 +48,21 @@ CREATE TABLE `balances` (
 --
 
 CREATE TABLE `bills` (
+  `id` int(11) NOT NULL,
   `idSubscription` int(11) NOT NULL,
   `paymentDate` date NOT NULL,
+  `billingDate` date NOT NULL,
   `nextBillingDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `bills`
+--
+
+INSERT INTO `bills` (`id`, `idSubscription`, `paymentDate`, `billingDate`, `nextBillingDate`) VALUES
+(18, 3, '2023-11-06', '2023-09-05', '2023-10-05'),
+(19, 4, '2023-11-06', '2023-10-03', '2023-11-03'),
+(21, 4, '2023-11-06', '2023-11-03', '2023-12-03');
 
 -- --------------------------------------------------------
 
@@ -56,10 +75,18 @@ CREATE TABLE `subscriptions` (
   `idUser` int(11) NOT NULL,
   `vodType` varchar(15) NOT NULL,
   `subscribeDate` date NOT NULL,
-  `cancelDate` date DEFAULT NULL,
+  `lastCancelDate` date DEFAULT NULL,
   `status` enum('active','inactive','suspend','') NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`id`, `idUser`, `vodType`, `subscribeDate`, `lastCancelDate`, `status`, `price`) VALUES
+(3, 38, 'netflix', '2023-09-05', '2023-11-06', 'suspend', '23.00'),
+(4, 68, 'prime', '2023-10-03', NULL, 'active', '4.00');
 
 -- --------------------------------------------------------
 
@@ -68,9 +95,10 @@ CREATE TABLE `subscriptions` (
 --
 
 CREATE TABLE `top_ups` (
+  `id` int(11) NOT NULL,
   `idBalance` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `topUpDate` int(11) NOT NULL
+  `topUpDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -85,6 +113,15 @@ CREATE TABLE `users` (
   `password` text NOT NULL,
   `userRole` enum('admin','user','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `userRole`) VALUES
+(38, 'mackal', '$2y$10$4NBohG3rciV9lMYs4NZzReFS32OOsTiMjmvNDaBgrdpFi02.yZt1u', 'admin'),
+(40, 'macka1l', '$2y$10$kHQtcxS0nZLrsyhFOmnhVeqfZX2w6ZNDt18v9ZH76K0x1NRpAwch6', 'admin'),
+(68, 'jan', '$2y$10$rxCMMYxLye4nSBWGiBtkje93dljgdfeF1FYP.m58vdPwv8n2KJIqe', 'user');
 
 -- --------------------------------------------------------
 
@@ -121,6 +158,7 @@ ALTER TABLE `balances`
 -- Indeksy dla tabeli `bills`
 --
 ALTER TABLE `bills`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_idSubscription_bills` (`idSubscription`);
 
 --
@@ -128,13 +166,14 @@ ALTER TABLE `bills`
 --
 ALTER TABLE `subscriptions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_vodType_subscription` (`vodType`),
+  ADD UNIQUE KEY `unique_vod_type` (`vodType`),
   ADD KEY `fk_idUser_subscription` (`idUser`);
 
 --
 -- Indeksy dla tabeli `top_ups`
 --
 ALTER TABLE `top_ups`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `top_ups_idUser` (`idBalance`);
 
 --
@@ -158,19 +197,31 @@ ALTER TABLE `vod_types`
 -- AUTO_INCREMENT dla tabeli `balances`
 --
 ALTER TABLE `balances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT dla tabeli `bills`
+--
+ALTER TABLE `bills`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT dla tabeli `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT dla tabeli `top_ups`
+--
+ALTER TABLE `top_ups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Ograniczenia dla zrzutów tabel
