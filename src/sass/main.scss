@@ -1,0 +1,79 @@
+@use 'utilities/colors' as *;
+@use 'components/hamburger';
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Urbanist', sans-serif;
+	scroll-behavior: smooth;
+	// 10px
+	font-size: 62.5%;
+}
+
+body {
+	background-color: $background-900;
+}
+
+.c-nav {
+	width: 100%;
+	color: $primary;
+	&__top {
+		font-weight: 600;
+		font-size: 1.8rem;
+		&--mobile {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1.2rem 1.6rem;
+		}
+	}
+
+	&__panel {
+		font-size: 1.6rem;
+
+		& p {
+			color: $gray;
+		}
+
+		&--mobile {
+			opacity: 0;
+			display: flex;
+			gap: 3.6rem;
+			flex-direction: column;
+			padding-top: 1.6rem;
+			padding-left: 1.6rem;
+
+			div {
+				display: flex;
+				flex-direction: column;
+				gap: 0.8rem;
+
+				ul {
+					list-style-type: none;
+					display: flex;
+					flex-direction: column;
+					gap: 0.4rem;
+				}
+			}
+
+			&--opened {
+				opacity: 1;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: $background-900;
+			}
+		}
+	}
+}
+
+@import 'breakpoints/small';
+@import 'breakpoints/medium';
+@import 'breakpoints/large';
