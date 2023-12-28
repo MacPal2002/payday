@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . './basic.php');
+    include_once(__DIR__ . '/basic.php');
 
     $sqlArray =  array( 
         array(
