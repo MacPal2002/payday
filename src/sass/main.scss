@@ -92,6 +92,17 @@ main {
 	border-radius: 12px;
 	padding: 3.2rem;
 	overflow-y: scroll;
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $gray;
+		border: 10px solid transparent;
+		border-radius: 12px;
+		background-clip: padding-box;
+	}
+
+	&::-webkit-scrollbar {
+		width: 24px;
+	}
 }
 
 .test {

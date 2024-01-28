@@ -42,30 +42,13 @@
 	}
 
 	main {
-		background-color: $background-600;
-		width: 100%;
 		height: calc(100vh - ($main-ctn-margin * 2));
-		border-radius: 12px;
 		margin: $main-ctn-margin;
 		margin-left: 0;
-		overflow-y: scroll;
-
 		padding: 6.4rem;
 
 		&::-webkit-scrollbar-thumb {
-			background-color: $gray;
 			border: 8px solid transparent;
-			border-radius: 12px;
-			background-clip: padding-box;
 		}
-
-		&::-webkit-scrollbar {
-			width: 24px;
-		}
-	}
-
-	.test {
-		background-color: red;
-		height: 1000px;
 	}
 }
