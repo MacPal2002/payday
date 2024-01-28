@@ -5,7 +5,15 @@
 		display: none;
 	}
 
+	body {
+		display: flex;
+	}
+
+	$main-ctn-margin: 4.8rem;
 	.c-nav {
+		width: 20.9rem;
+		flex-shrink: 0;
+		margin: $main-ctn-margin 0 $main-ctn-margin 0;
 		&__top {
 			padding: 3.2rem 0 3.2rem 0;
 			font-size: 2.4rem;
@@ -31,5 +39,33 @@
 			margin-left: 3.2rem;
 			opacity: 1;
 		}
+	}
+
+	main {
+		background-color: $background-600;
+		width: 100%;
+		height: calc(100vh - ($main-ctn-margin * 2));
+		border-radius: 12px;
+		margin: $main-ctn-margin;
+		margin-left: 0;
+		overflow-y: scroll;
+
+		padding: 6.4rem;
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $gray;
+			border: 8px solid transparent;
+			border-radius: 12px;
+			background-clip: padding-box;
+		}
+
+		&::-webkit-scrollbar {
+			width: 24px;
+		}
+	}
+
+	.test {
+		background-color: red;
+		height: 1000px;
 	}
 }

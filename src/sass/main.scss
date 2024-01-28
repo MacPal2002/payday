@@ -20,8 +20,14 @@ body {
 	background-color: $background-900;
 }
 
+.u-overflow-hidden {
+	overflow: hidden;
+}
+
 .c-nav {
 	width: 100%;
+	// margin-top: 6.2rem;
+	background-color: $background-900;
 	color: $primary;
 	&__top {
 		font-weight: 600;
@@ -39,6 +45,7 @@ body {
 		font-size: 1.8rem;
 		opacity: 0;
 		display: flex;
+		position: absolute;
 		gap: 3.6rem;
 		flex-direction: column;
 		padding-top: 1.6rem;
@@ -69,12 +76,30 @@ body {
 
 		&--opened {
 			opacity: 1;
-			position: absolute;
+			position: relative;
 			width: 100%;
-			height: 100%;
+			height: 100vh;
 			background-color: $background-900;
+			overflow: hidden;
 		}
 	}
+}
+
+main {
+	background-color: $background-600;
+	width: 100%;
+	height: calc(100vh - 6.2rem);
+	border-radius: 12px;
+	padding: 3.2rem;
+	overflow-y: scroll;
+}
+
+.test {
+	height: 1000px;
+	background-color: red;
+	margin-top: 1.6rem;
+	// margin: 3.2rem;
+	// padding: 3.2rem;
 }
 
 @import 'breakpoints/small';
