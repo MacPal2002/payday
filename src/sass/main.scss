@@ -20,8 +20,57 @@ body {
 	background-color: $background-900;
 }
 
+.u-icon {
+	mask-size: 100%;
+	mask-repeat: no-repeat;
+	mask-position: center;
+	width: 24px;
+	height: 24px;
+	background-color: red;
+}
+
 .u-overflow-hidden {
 	overflow: hidden;
+}
+
+.u-colorize {
+	font-weight: 400;
+	color: $accent;
+
+	&--success {
+		font-weight: 400;
+		color: $success;
+	}
+
+	&--error {
+		font-weight: 400;
+		color: $error;
+	}
+
+	&--faded {
+		font-weight: 400;
+		color: $accent-faded;
+	}
+}
+
+.u-emphasize {
+	font-weight: 600;
+	color: $accent;
+
+	&--success {
+		font-weight: 600;
+		color: $success;
+	}
+
+	&--error {
+		font-weight: 600;
+		color: $error;
+	}
+
+	&--faded {
+		font-weight: 600;
+		color: $accent-faded;
+	}
 }
 
 .c-nav {
@@ -31,7 +80,11 @@ body {
 	color: $primary;
 	&__top {
 		font-weight: 600;
-		font-size: 1.8rem;
+
+		& h1 {
+			font-size: 1.8rem;
+		}
+
 		&--mobile {
 			display: flex;
 			flex-direction: row;
@@ -89,9 +142,13 @@ main {
 	background-color: $background-600;
 	width: 100%;
 	height: calc(100vh - 6.2rem);
-	border-radius: 12px;
-	padding: 3.2rem;
+	padding: 2.4rem;
+	border-radius: 12px 12px 0 0;
 	overflow-y: scroll;
+
+	display: flex;
+	flex-direction: column;
+	gap: 4.8rem;
 
 	&::-webkit-scrollbar-thumb {
 		background-color: $gray;
@@ -105,12 +162,129 @@ main {
 	}
 }
 
-.test {
-	height: 1000px;
-	background-color: red;
-	margin-top: 1.6rem;
-	// margin: 3.2rem;
-	// padding: 3.2rem;
+.c-balance {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	font-size: 1.8rem;
+	color: $primary;
+
+	&__icon-box {
+		background-color: $accent;
+		height: 6.4rem;
+		width: 6.4rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 100%;
+	}
+
+	&__icon {
+		background-color: $accent-faded;
+	}
+
+	&__welcome-text {
+		display: none;
+	}
+
+	&__amount {
+		h2 {
+			font-size: 1.8rem;
+			font-weight: 400;
+		}
+	}
+}
+
+.c-subscriptions {
+	color: $primary;
+
+	p {
+		font-size: 1.8rem;
+	}
+
+	&__heading-box {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.8rem;
+		padding: 2.4rem 0;
+
+		h2 {
+			font-weight: 400;
+			font-size: 1.6rem;
+		}
+
+		p {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+.c-card {
+	height: 19.2rem;
+	width: 19.2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 2.4rem;
+	border-radius: 12px;
+	background: $gradient;
+
+	&__title-box {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		gap: 1.6rem;
+		p {
+			font-size: 2rem;
+		}
+	}
+
+	&__icon-box {
+		height: 4.8rem;
+		width: 4.8rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 12px;
+		background-color: $accent-faded;
+	}
+
+	&__icon {
+		background-color: $accent;
+	}
+
+	&__price-box {
+		padding-top: 1.6rem;
+
+		p:first-child {
+			font-size: 1.6rem;
+		}
+
+		p:last-child {
+			font-size: 1.2rem;
+		}
+	}
+
+	&__action {
+		position: absolute;
+		bottom: 1.6rem;
+		a {
+			font-size: 1.2rem;
+			color: inherit;
+			text-decoration: underline;
+			text-decoration-style: dashed;
+			text-underline-offset: 0.5rem;
+		}
+	}
+}
+
+// Slick
+
+.slick-slide {
+	margin-right: 1.6rem;
+	height: 19.2rem;
+	width: 19.2rem;
 }
 
 @import 'breakpoints/small';
