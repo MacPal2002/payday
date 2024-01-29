@@ -20,8 +20,42 @@ body {
 	background-color: $background-900;
 }
 
+.u-icon {
+	mask-size: 100%;
+	mask-repeat: no-repeat;
+	mask-position: center;
+	width: 24px;
+	height: 24px;
+	background-color: red;
+}
+
 .u-overflow-hidden {
 	overflow: hidden;
+}
+
+@mixin color-modifier {
+	color: $accent;
+
+	&--success {
+		color: $success;
+	}
+
+	&--error {
+		color: $error;
+	}
+
+	&--faded {
+		color: $accent-faded;
+	}
+}
+
+.u-colorize {
+	@include color-modifier;
+}
+
+.u-emphasize {
+	font-weight: 600;
+	@include color-modifier;
 }
 
 .c-nav {
@@ -31,7 +65,11 @@ body {
 	color: $primary;
 	&__top {
 		font-weight: 600;
-		font-size: 1.8rem;
+
+		& h1 {
+			font-size: 1.8rem;
+		}
+
 		&--mobile {
 			display: flex;
 			flex-direction: row;
@@ -89,8 +127,8 @@ main {
 	background-color: $background-600;
 	width: 100%;
 	height: calc(100vh - 6.2rem);
-	border-radius: 12px;
-	padding: 3.2rem;
+	padding: 2.4rem;
+	border-radius: 12px 12px 0 0;
 	overflow-y: scroll;
 
 	&::-webkit-scrollbar-thumb {
@@ -105,12 +143,38 @@ main {
 	}
 }
 
-.test {
-	height: 1000px;
-	background-color: red;
-	margin-top: 1.6rem;
-	// margin: 3.2rem;
-	// padding: 3.2rem;
+.c-balance {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	font-size: 1.8rem;
+	color: $primary;
+
+	&__icon-box {
+		background-color: $accent;
+		border-radius: 100%;
+		height: 6.4rem;
+		width: 6.4rem;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__icon {
+		background-color: $accent-faded;
+	}
+
+	&__welcome-text {
+		display: none;
+	}
+
+	&__amount {
+		h2 {
+			font-size: 1.8rem;
+			font-weight: 400;
+		}
+	}
 }
 
 @import 'breakpoints/small';

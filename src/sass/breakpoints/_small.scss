@@ -16,9 +16,12 @@
 		margin: $main-ctn-margin 0 $main-ctn-margin 0;
 		&__top {
 			padding: 3.2rem 0 3.2rem 0;
-			font-size: 2.4rem;
 
-			p::before {
+			& h1 {
+				font-size: 2.4rem;
+			}
+
+			h1::before {
 				$leftValue: -0.8rem;
 				content: '';
 				display: inline-block;
@@ -46,9 +49,53 @@
 		margin: $main-ctn-margin;
 		margin-left: 0;
 		padding: 6.4rem;
+		border-radius: 12px;
 
 		&::-webkit-scrollbar-thumb {
 			border: 8px solid transparent;
+		}
+	}
+
+	.c-balance {
+		background-color: $background-900;
+		position: relative;
+		width: 47.2rem;
+		height: 25.6rem;
+		align-items: flex-start;
+		justify-content: space-between;
+		border-radius: 12px;
+		font-size: 2.4rem;
+
+		&__icon-box {
+			height: 19.2rem;
+			width: 19.2rem;
+			border-radius: 12px 0 64px 0;
+			background: $gradient;
+		}
+
+		&__icon {
+			display: none;
+		}
+
+		&__welcome-text {
+			display: block;
+		}
+
+		&__amount {
+			position: relative;
+			top: 30%;
+			right: 20%;
+		}
+
+		&__decorative-block {
+			position: absolute;
+			height: 4.8rem;
+			width: 12.8rem;
+			right: 0;
+			bottom: 0;
+			transform: scaleX(-1);
+			border-radius: 0 64px 0 12px;
+			background: $gradient;
 		}
 	}
 }
