@@ -69,7 +69,7 @@
 		&__icon-box {
 			height: 19.2rem;
 			width: 19.2rem;
-			border-radius: 12px 0 64px 0;
+			border-radius: 12px 0 64px 12px;
 			background: $gradient;
 		}
 
@@ -97,5 +97,27 @@
 			border-radius: 0 64px 0 12px;
 			background: $gradient;
 		}
+	}
+
+	.c-subscriptions {
+		width: 47.2rem;
+		height: 44.6rem;
+		padding: 3.2rem;
+		border-radius: 12px;
+		background-color: $background-900;
+	}
+
+	.l-cards {
+		display: flex;
+		height: calc(100% - 7.9rem);
+		flex-wrap: wrap;
+		gap: 1.6rem;
+		margin-right: -1.6rem;
+		overflow-y: scroll;
+		overflow-y: overlay;
+	}
+
+	.c-card:last-child {
+		margin-bottom: 3.2rem;
 	}
 }
