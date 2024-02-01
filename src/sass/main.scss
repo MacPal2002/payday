@@ -1,5 +1,6 @@
 @use 'utilities/colors' as *;
 @use 'components/hamburger';
+@use 'components/icon-box';
 
 @mixin scrollbar {
 	&::-webkit-scrollbar-thumb {
@@ -31,59 +32,6 @@ html {
 
 body {
 	background-color: $background-900;
-}
-
-.u-icon {
-	mask-size: 100%;
-	mask-repeat: no-repeat;
-	mask-position: center;
-	width: 24px;
-	height: 24px;
-	background-color: red;
-}
-
-.u-overflow-hidden {
-	overflow: hidden;
-}
-
-.u-colorize {
-	font-weight: 400;
-	color: $accent;
-
-	&--success {
-		font-weight: 400;
-		color: $success;
-	}
-
-	&--error {
-		font-weight: 400;
-		color: $error;
-	}
-
-	&--faded {
-		font-weight: 400;
-		color: $accent-faded;
-	}
-}
-
-.u-emphasize {
-	font-weight: 600;
-	color: $accent;
-
-	&--success {
-		font-weight: 600;
-		color: $success;
-	}
-
-	&--error {
-		font-weight: 600;
-		color: $error;
-	}
-
-	&--faded {
-		font-weight: 600;
-		color: $accent-faded;
-	}
 }
 
 .c-nav {
@@ -159,6 +107,7 @@ main {
 	flex-direction: column;
 	gap: 4.8rem;
 	padding: 2.4rem;
+	padding-right: 0;
 	border-radius: 12px 12px 0 0;
 	overflow-y: scroll;
 	@include scrollbar();
@@ -170,20 +119,6 @@ main {
 	gap: 1.6rem;
 	font-size: 1.8rem;
 	color: $primary;
-
-	&__icon-box {
-		background-color: $accent;
-		height: 6.4rem;
-		width: 6.4rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 100%;
-	}
-
-	&__icon {
-		background-color: $accent-faded;
-	}
 
 	&__welcome-text {
 		display: none;
@@ -202,6 +137,7 @@ main {
 
 	p {
 		font-size: 1.8rem;
+		font-weight: 600;
 	}
 
 	&__heading-box {
@@ -246,18 +182,10 @@ main {
 		}
 	}
 
-	&__icon-box {
+	.c-icon-box {
 		height: 4.8rem;
 		width: 4.8rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		border-radius: 12px;
-		background-color: $accent-faded;
-	}
-
-	&__icon {
-		background-color: $accent;
 	}
 
 	&__price-box {
@@ -284,12 +212,142 @@ main {
 	}
 }
 
-// Slick
-
 .slick-slide {
 	margin-right: 1.6rem;
 	height: 19.2rem;
 	width: 19.2rem;
+}
+
+.c-transactions {
+	color: $primary;
+	h2 {
+		font-size: 1.8rem;
+	}
+
+	&__button {
+		background-color: transparent;
+		border: none;
+		margin: 2.4rem 0.8rem 0 0;
+		font-size: 1.6rem;
+		color: $primary;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $accent;
+		}
+	}
+
+	&__table {
+		position: absolute;
+		width: 100%;
+		height: 51.2rem;
+		left: 0;
+		right: 0;
+		border-radius: 12px;
+		margin-top: 1.2rem;
+		overflow-y: scroll;
+		background-color: $background-900;
+
+		@include scrollbar();
+	}
+}
+
+.c-table {
+	position: absolute;
+	width: 100%;
+	height: 51.2rem;
+	left: 0;
+	right: 0;
+	border-radius: 12px;
+	margin-top: 1.2rem;
+	overflow-y: scroll;
+	background-color: $background-900;
+
+	@include scrollbar();
+
+	&__record {
+		display: flex;
+		align-items: flex-end;
+		padding: 1.2rem 2.4rem;
+		font-size: 1.6rem;
+		margin-right: -2.4rem;
+	}
+
+	&__record:first-child {
+		padding-top: 2.4rem;
+	}
+
+	&__record:last-child {
+		padding-bottom: 2.4rem;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		margin-left: 2.4rem;
+	}
+
+	&__date {
+		font-size: 1.2rem;
+		margin-bottom: 0.4rem;
+		color: $gray-light;
+	}
+
+	&__cash-flow {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		margin-left: auto;
+		text-align: right;
+	}
+}
+
+// Utility Classes
+
+.u-overflow-hidden {
+	overflow: hidden;
+}
+
+.u-colorize {
+	font-weight: 400;
+	color: $accent;
+
+	&--success {
+		@extend .u-colorize;
+		color: $success;
+	}
+
+	&--error {
+		@extend .u-colorize;
+		color: $error;
+	}
+
+	&--faded {
+		@extend .u-colorize;
+		color: $accent-faded;
+	}
+}
+
+.u-emphasize {
+	font-weight: 600;
+	color: $accent;
+
+	&--success {
+		@extend .u-emphasize;
+		color: $success;
+	}
+
+	&--error {
+		@extend .u-emphasize;
+		color: $error;
+	}
+
+	&--faded {
+		@extend .u-emphasize;
+		color: $accent-faded;
+	}
 }
 
 @import 'breakpoints/small';

@@ -1,0 +1,48 @@
+@use 'utilities/colors' as *;
+
+.c-icon-box {
+	$parent-selector: &;
+	height: 6.4rem;
+	width: 6.4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 100%;
+	background-color: $accent;
+
+	&__icon {
+		width: 24px;
+		height: 24px;
+		mask-size: 100%;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		background-color: $accent-faded;
+	}
+
+	&--success {
+		@extend .c-icon-box;
+		background-color: $success;
+
+		#{$parent-selector}__icon {
+			background-color: $success-dark;
+		}
+	}
+
+	&--error {
+		@extend .c-icon-box;
+		background-color: $error;
+
+		#{$parent-selector}__icon {
+			background-color: $error-dark;
+		}
+	}
+
+	&--accent-faded {
+		@extend .c-icon-box;
+		background-color: $accent-faded;
+
+		#{$parent-selector}__icon {
+			background-color: $accent;
+		}
+	}
+}
