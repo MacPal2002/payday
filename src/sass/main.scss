@@ -13,6 +13,10 @@
 	&::-webkit-scrollbar {
 		width: 24px;
 	}
+
+	&::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
 }
 
 *,
@@ -224,10 +228,14 @@ main {
 		font-size: 1.8rem;
 	}
 
+	&__buttons {
+		padding: 2.4rem 0 1.2rem 0;
+	}
+
 	&__button {
 		background-color: transparent;
 		border: none;
-		margin: 2.4rem 0.8rem 0 0;
+		margin-right: 0.8rem;
 		font-size: 1.6rem;
 		color: $primary;
 
@@ -236,20 +244,6 @@ main {
 		&:active {
 			color: $accent;
 		}
-	}
-
-	&__table {
-		position: absolute;
-		width: 100%;
-		height: 51.2rem;
-		left: 0;
-		right: 0;
-		border-radius: 12px;
-		margin-top: 1.2rem;
-		overflow-y: scroll;
-		background-color: $background-900;
-
-		@include scrollbar();
 	}
 }
 
@@ -260,7 +254,6 @@ main {
 	left: 0;
 	right: 0;
 	border-radius: 12px;
-	margin-top: 1.2rem;
 	overflow-y: scroll;
 	background-color: $background-900;
 
@@ -279,7 +272,7 @@ main {
 	}
 
 	&__record:last-child {
-		padding-bottom: 2.4rem;
+		padding-bottom: 1.2rem;
 	}
 
 	&__info {

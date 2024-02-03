@@ -55,6 +55,14 @@
 		&::-webkit-scrollbar-thumb {
 			border: 8px solid transparent;
 		}
+
+		// flex-wrap: wrap;
+
+		// TODO: Podzielić na dwie kolumny (kolumny mają flex-dir: column a ich kontener flex-dir: row)
+
+		flex-direction: column;
+		align-content: center;
+		align-items: center;
 	}
 
 	.c-balance {
@@ -120,5 +128,28 @@
 
 	.c-card:last-child {
 		margin-bottom: 3.2rem;
+	}
+
+	.c-transactions {
+		width: 47.2rem;
+		height: 75rem;
+		padding: 3.2rem;
+		border-radius: 12px;
+		background-color: $background-900;
+	}
+
+	.c-table {
+		position: static;
+		height: calc(100% - 6.4rem);
+
+		&__record {
+			margin-right: 0;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		&__record:last-child {
+			padding-bottom: 2.4rem;
+		}
 	}
 }
