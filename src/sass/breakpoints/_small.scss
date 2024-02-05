@@ -1,7 +1,7 @@
 @use 'utilities/colors' as *;
 @use 'components/icon-box';
 
-@media (min-width: 992px) {
+@media (min-width: 880px) {
 	.c-hamburger {
 		display: none;
 	}
@@ -39,6 +39,7 @@
 		}
 
 		&__panel {
+			visibility: visible;
 			font-size: 1.6rem;
 			padding-left: 0;
 			margin-left: 3.2rem;
