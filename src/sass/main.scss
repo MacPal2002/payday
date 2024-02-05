@@ -40,25 +40,30 @@ body {
 
 .c-nav {
 	position: sticky;
+	width: 100%;
 	top: 0;
 	z-index: 1;
-
-	// TODO
-	// &::before {
-	// 	content: '';
-	// 	width: 1.2rem;
-	// 	height: 1.2rem;
-	// 	background-color: $background-900;
-	// 	background-image: url('../../dist/public/img/corner.min.svg');
-	// 	position: absolute;
-	// 	bottom: -2.4rem;
-	// 	border-radius: 0 0 12px 0;
-	// 	z-index: 2;
-	// }
-
-	width: 100%;
 	background-color: $background-900;
 	color: $primary;
+
+	@mixin corner {
+		content: url('../img/corner.min.svg');
+		width: 1.2rem;
+		height: 1.2rem;
+		position: absolute;
+		bottom: -1.2rem;
+	}
+
+	&::before {
+		@include corner();
+	}
+
+	&::after {
+		@include corner();
+		right: 0;
+		transform: scaleX(-1);
+	}
+
 	&__top {
 		font-weight: 600;
 
@@ -71,19 +76,19 @@ body {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
-			padding: 1.2rem 1.6rem;
+			padding: 1.2rem 2.4rem;
 		}
 	}
 
 	&__panel {
-		font-size: 1.8rem;
-		opacity: 0;
+		visibility: hidden;
 		display: flex;
 		position: absolute;
 		gap: 3.6rem;
 		flex-direction: column;
-		padding-top: 1.6rem;
-		padding-left: 1.6rem;
+		padding: 2.4rem;
+		padding-bottom: 3.2rem;
+		font-size: 1.8rem;
 
 		& p {
 			color: $gray;
@@ -101,7 +106,14 @@ body {
 				gap: 0.4rem;
 			}
 
-			li:hover {
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			a:hover,
+			a:focus,
+			a:active {
 				color: $accent;
 				transition: color 0.3s;
 				cursor: pointer;
@@ -109,12 +121,11 @@ body {
 		}
 
 		&--opened {
-			opacity: 1;
+			visibility: visible;
 			position: relative;
 			width: 100%;
-			height: 100vh;
+			height: auto;
 			background-color: $background-900;
-			overflow: hidden;
 		}
 	}
 }
@@ -127,9 +138,8 @@ main {
 	flex-direction: column;
 	gap: 4.8rem;
 	padding: 2.4rem;
-	padding-right: 0;
+
 	border-radius: 12px 12px 0 0;
-	overflow-y: scroll;
 	@include scrollbar();
 }
 
@@ -268,6 +278,10 @@ main {
 		&:active {
 			color: $accent;
 		}
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
 
@@ -288,7 +302,6 @@ main {
 		align-items: flex-end;
 		padding: 1.2rem 2.4rem;
 		font-size: 1.6rem;
-		margin-right: -2.4rem;
 	}
 
 	&__record:first-child {
@@ -323,9 +336,9 @@ main {
 
 // Utility Classes
 
-.u-overflow-hidden {
-	overflow: hidden;
-}
+// .u-overflow-hidden {
+// 	overflow: hidden;
+// }
 
 .u-colorize {
 	font-weight: 400;
