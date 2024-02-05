@@ -18,14 +18,26 @@ window.addEventListener('DOMContentLoaded', () => {
 	})
 
 	// Slick
-	$('.l-cards').slick({
-		infinite: false,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		// centerMode: true,
-		arrows: false,
-		variableWidth: true,
-		focusOnSelect: true,
-		centerPadding: 0,
-	})
+	const cards = $('.l-cards')
+	const mediaQuery = window.matchMedia('(max-width: 992px)')
+
+	const handleSwitchSlick = e => {
+		if (e.matches) {
+			cards.slick({
+				infinite: false,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// centerMode: true,
+				arrows: false,
+				variableWidth: true,
+				focusOnSelect: true,
+				centerPadding: 0,
+			})
+		} else if (cards.hasClass('slick-initialized')) {
+			cards.slick('unslick')
+		}
+	}
+
+	mediaQuery.addEventListener('change', handleSwitchSlick)
+	handleSwitchSlick(mediaQuery)
 })

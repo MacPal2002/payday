@@ -1,4 +1,5 @@
 @use 'utilities/colors' as *;
+@use 'components/icon-box';
 
 @media (min-width: 992px) {
 	.c-hamburger {
@@ -14,6 +15,7 @@
 		width: 20.9rem;
 		flex-shrink: 0;
 		margin: $main-ctn-margin 0 $main-ctn-margin 0;
+
 		&__top {
 			padding: 3.2rem 0 3.2rem 0;
 
@@ -46,6 +48,9 @@
 
 	main {
 		height: calc(100vh - ($main-ctn-margin * 2));
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
 		margin: $main-ctn-margin;
 		margin-left: 0;
 		padding: 6.4rem;
@@ -57,24 +62,26 @@
 	}
 
 	.c-balance {
+		$box-width: 19.2rem;
 		background-color: $background-900;
 		position: relative;
 		width: 47.2rem;
-		height: 25.6rem;
+		height: 19.2rem;
 		align-items: flex-start;
 		justify-content: space-between;
 		border-radius: 12px;
 		font-size: 2.4rem;
 
-		&__icon-box {
-			height: 19.2rem;
-			width: 19.2rem;
-			border-radius: 12px 0 64px 0;
+		.c-icon-box {
+			height: 100%;
+			width: $box-width;
+			flex-shrink: 0;
+			border-radius: 12px 0 64px 12px;
 			background: $gradient;
-		}
 
-		&__icon {
-			display: none;
+			&__icon {
+				display: none;
+			}
 		}
 
 		&__welcome-text {
@@ -82,9 +89,16 @@
 		}
 
 		&__amount {
-			position: relative;
-			top: 30%;
-			right: 20%;
+			height: 100%;
+			width: calc(100% - $box-width);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-left: 4.8rem;
+
+			h2 {
+				font-size: 2.4rem;
+			}
 		}
 
 		&__decorative-block {
@@ -96,6 +110,85 @@
 			transform: scaleX(-1);
 			border-radius: 0 64px 0 12px;
 			background: $gradient;
+		}
+	}
+
+	.c-subscriptions {
+		width: 47.2rem;
+		height: 44.6rem;
+		padding: 3.2rem;
+		border-radius: 12px;
+		background-color: $background-900;
+
+		&__header {
+			font-weight: 400;
+			color: $gray-light;
+			font-size: 2rem;
+			br {
+				display: none;
+			}
+		}
+
+		&__heading-box {
+			h2,
+			p {
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.l-cards {
+		display: flex;
+		height: calc(100% - 6.4rem);
+		flex-wrap: wrap;
+		gap: 1.6rem;
+		margin-right: -1.6rem;
+		overflow-y: scroll;
+	}
+
+	.c-card:last-child {
+		margin-bottom: 3.2rem;
+	}
+
+	.c-transactions {
+		position: relative;
+		width: 47.2rem;
+		height: 68.6rem;
+		padding: 3.2rem;
+		border-radius: 12px;
+		background-color: $background-900;
+
+		&__header {
+			font-weight: 400;
+			color: $gray-light;
+			font-size: 2rem;
+			br {
+				display: none;
+			}
+		}
+
+		&__button {
+			font-size: 2rem;
+		}
+	}
+
+	.c-table {
+		left: 3.2rem;
+		width: 90%;
+		height: calc(100% - 11.5rem);
+
+		&__record {
+			margin-right: 0;
+			padding-left: 0;
+			padding-right: 0;
+
+			@-moz-document url-prefix() {
+				padding-right: 2.4rem;
+			}
+		}
+
+		&__record:last-child {
+			padding-bottom: 2.4rem;
 		}
 	}
 }

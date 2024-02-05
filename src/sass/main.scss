@@ -1,5 +1,23 @@
 @use 'utilities/colors' as *;
 @use 'components/hamburger';
+@use 'components/icon-box';
+
+@mixin scrollbar {
+	&::-webkit-scrollbar-thumb {
+		background-color: $gray;
+		border: 10px solid transparent;
+		border-radius: 12px;
+		background-clip: padding-box;
+	}
+
+	&::-webkit-scrollbar {
+		width: 24px;
+	}
+
+	&::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+}
 
 *,
 *::before,
@@ -20,62 +38,25 @@ body {
 	background-color: $background-900;
 }
 
-.u-icon {
-	mask-size: 100%;
-	mask-repeat: no-repeat;
-	mask-position: center;
-	width: 24px;
-	height: 24px;
-	background-color: red;
-}
-
-.u-overflow-hidden {
-	overflow: hidden;
-}
-
-.u-colorize {
-	font-weight: 400;
-	color: $accent;
-
-	&--success {
-		font-weight: 400;
-		color: $success;
-	}
-
-	&--error {
-		font-weight: 400;
-		color: $error;
-	}
-
-	&--faded {
-		font-weight: 400;
-		color: $accent-faded;
-	}
-}
-
-.u-emphasize {
-	font-weight: 600;
-	color: $accent;
-
-	&--success {
-		font-weight: 600;
-		color: $success;
-	}
-
-	&--error {
-		font-weight: 600;
-		color: $error;
-	}
-
-	&--faded {
-		font-weight: 600;
-		color: $accent-faded;
-	}
-}
-
 .c-nav {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+
+	// TODO
+	// &::before {
+	// 	content: '';
+	// 	width: 1.2rem;
+	// 	height: 1.2rem;
+	// 	background-color: $background-900;
+	// 	background-image: url('../../dist/public/img/corner.min.svg');
+	// 	position: absolute;
+	// 	bottom: -2.4rem;
+	// 	border-radius: 0 0 12px 0;
+	// 	z-index: 2;
+	// }
+
 	width: 100%;
-	// margin-top: 6.2rem;
 	background-color: $background-900;
 	color: $primary;
 	&__top {
@@ -142,24 +123,21 @@ main {
 	background-color: $background-600;
 	width: 100%;
 	height: calc(100vh - 6.2rem);
-	padding: 2.4rem;
-	border-radius: 12px 12px 0 0;
-	overflow-y: scroll;
-
 	display: flex;
 	flex-direction: column;
 	gap: 4.8rem;
+	padding: 2.4rem;
+	padding-right: 0;
+	border-radius: 12px 12px 0 0;
+	overflow-y: scroll;
+	@include scrollbar();
+}
 
-	&::-webkit-scrollbar-thumb {
-		background-color: $gray;
-		border: 10px solid transparent;
-		border-radius: 12px;
-		background-clip: padding-box;
-	}
-
-	&::-webkit-scrollbar {
-		width: 24px;
-	}
+.l-column-left,
+.l-column-right {
+	display: flex;
+	flex-direction: column;
+	gap: 4.8rem;
 }
 
 .c-balance {
@@ -168,20 +146,6 @@ main {
 	gap: 1.6rem;
 	font-size: 1.8rem;
 	color: $primary;
-
-	&__icon-box {
-		background-color: $accent;
-		height: 6.4rem;
-		width: 6.4rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 100%;
-	}
-
-	&__icon {
-		background-color: $accent-faded;
-	}
 
 	&__welcome-text {
 		display: none;
@@ -198,8 +162,9 @@ main {
 .c-subscriptions {
 	color: $primary;
 
-	p {
+	&__header {
 		font-size: 1.8rem;
+		font-weight: 600;
 	}
 
 	&__heading-box {
@@ -219,6 +184,10 @@ main {
 	}
 }
 
+.l-cards {
+	@include scrollbar();
+}
+
 .c-card {
 	height: 19.2rem;
 	width: 19.2rem;
@@ -232,7 +201,7 @@ main {
 
 	&__title-box {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: flex-start;
 		align-items: center;
 		gap: 1.6rem;
 		p {
@@ -240,18 +209,10 @@ main {
 		}
 	}
 
-	&__icon-box {
+	.c-icon-box {
 		height: 4.8rem;
 		width: 4.8rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		border-radius: 12px;
-		background-color: $accent-faded;
-	}
-
-	&__icon {
-		background-color: $accent;
 	}
 
 	&__price-box {
@@ -267,8 +228,7 @@ main {
 	}
 
 	&__action {
-		position: absolute;
-		bottom: 1.6rem;
+		margin-top: 2.4rem;
 		a {
 			font-size: 1.2rem;
 			color: inherit;
@@ -279,12 +239,132 @@ main {
 	}
 }
 
-// Slick
-
 .slick-slide {
 	margin-right: 1.6rem;
 	height: 19.2rem;
 	width: 19.2rem;
+}
+
+.c-transactions {
+	color: $primary;
+
+	&__header {
+		font-size: 1.8rem;
+	}
+
+	&__buttons {
+		padding: 2.4rem 0 1.2rem 0;
+	}
+
+	&__button {
+		background-color: transparent;
+		border: none;
+		margin-right: 0.8rem;
+		font-size: 1.6rem;
+		color: $primary;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $accent;
+		}
+	}
+}
+
+.c-table {
+	position: absolute;
+	width: 100%;
+	height: 51.2rem;
+	left: 0;
+	right: 0;
+	border-radius: 12px;
+	overflow-y: scroll;
+	background-color: $background-900;
+
+	@include scrollbar();
+
+	&__record {
+		display: flex;
+		align-items: flex-end;
+		padding: 1.2rem 2.4rem;
+		font-size: 1.6rem;
+		margin-right: -2.4rem;
+	}
+
+	&__record:first-child {
+		padding-top: 2.4rem;
+	}
+
+	&__record:last-child {
+		padding-bottom: 1.2rem;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		margin-left: 2.4rem;
+	}
+
+	&__date {
+		font-size: 1.2rem;
+		margin-bottom: 0.4rem;
+		color: $gray-light;
+	}
+
+	&__cash-flow {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		margin-left: auto;
+		text-align: right;
+	}
+}
+
+// Utility Classes
+
+.u-overflow-hidden {
+	overflow: hidden;
+}
+
+.u-colorize {
+	font-weight: 400;
+	color: $accent;
+
+	&--success {
+		@extend .u-colorize;
+		color: $success;
+	}
+
+	&--error {
+		@extend .u-colorize;
+		color: $error;
+	}
+
+	&--faded {
+		@extend .u-colorize;
+		color: $accent-faded;
+	}
+}
+
+.u-emphasize {
+	font-weight: 600;
+	color: $accent;
+
+	&--success {
+		@extend .u-emphasize;
+		color: $success;
+	}
+
+	&--error {
+		@extend .u-emphasize;
+		color: $error;
+	}
+
+	&--faded {
+		@extend .u-emphasize;
+		color: $accent-faded;
+	}
 }
 
 @import 'breakpoints/small';
