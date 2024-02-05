@@ -4,7 +4,12 @@ window.addEventListener('DOMContentLoaded', () => {
 	const navPanelMobile = document.querySelector('.c-nav__panel')
 
 	// Mobile nav
-	hamburger.addEventListener('click', () => navPanelMobile.classList.toggle('c-nav__panel--opened'))
+	hamburger.addEventListener('click', e => {
+		navPanelMobile.classList.toggle('c-nav__panel--opened')
+
+		const targetButton = e.target.closest('button')
+		targetButton.classList.toggle('h-opened')
+	})
 
 	// Slick
 	const cards = $('.l-cards')
