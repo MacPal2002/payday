@@ -39,8 +39,24 @@ body {
 }
 
 .c-nav {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+
+	// TODO
+	// &::before {
+	// 	content: '';
+	// 	width: 1.2rem;
+	// 	height: 1.2rem;
+	// 	background-color: $background-900;
+	// 	background-image: url('../../dist/public/img/corner.min.svg');
+	// 	position: absolute;
+	// 	bottom: -2.4rem;
+	// 	border-radius: 0 0 12px 0;
+	// 	z-index: 2;
+	// }
+
 	width: 100%;
-	// margin-top: 6.2rem;
 	background-color: $background-900;
 	color: $primary;
 	&__top {
@@ -117,6 +133,13 @@ main {
 	@include scrollbar();
 }
 
+.l-column-left,
+.l-column-right {
+	display: flex;
+	flex-direction: column;
+	gap: 4.8rem;
+}
+
 .c-balance {
 	display: flex;
 	align-items: center;
@@ -139,7 +162,7 @@ main {
 .c-subscriptions {
 	color: $primary;
 
-	p {
+	&__header {
 		font-size: 1.8rem;
 		font-weight: 600;
 	}
@@ -224,7 +247,8 @@ main {
 
 .c-transactions {
 	color: $primary;
-	h2 {
+
+	&__header {
 		font-size: 1.8rem;
 	}
 

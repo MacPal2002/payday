@@ -37,221 +37,232 @@
         </div>
     </nav>
     <main>
-        <section class="c-balance">
-            <div class="c-icon-box">
-                <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+        <div class="l-column-left">
+            <section class="c-balance">
+                <div class="c-icon-box">
+                    <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+                    </div>
+                    <p class="c-balance__welcome-text"><span class="u-colorize--faded">Witaj👋</span><br>Daniel
+                        <p />
                 </div>
-                <p class="c-balance__welcome-text"><span class="u-emphasize--faded">Witaj👋</span><br>Daniel
-                    <p />
-            </div>
-            <div class="c-balance__amount">
-                <h2>Stan Konta</h2>
-                <p><span class="u-emphasize">54</span> zł</p>
-            </div>
-            <div class="c-balance__decorative-block"></div>
-        </section>
+                <div class="c-balance__amount">
+                    <h2>Stan Konta</h2>
+                    <p><span class="u-emphasize">54</span> zł</p>
+                </div>
+                <div class="c-balance__decorative-block"></div>
+            </section>
 
-        <section class="c-subscriptions">
-            <p>Zarządzaj<br>subskrybcjami</p>
-            <div class="c-subscriptions__heading-box">
-                <h2>Twoje subskrybcje</h2>
-                <p><span class="u-emphasize">16 zł</span> miesięcznie</p>
-            </div>
-            <div class="l-cards">
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
+            <section class="c-subscriptions">
+                <p class="c-subscriptions__header">Zarządzaj <br>subskrybcjami</p>
+                <div class="c-subscriptions__heading-box">
+                    <h2>Twoje subskrybcje</h2>
+                    <p><span class="u-emphasize">16 zł</span> miesięcznie</p>
+                </div>
+                <div class="l-cards">
+                    <div class="c-card">
+                        <div class="c-card__title-box">
+                            <div class="c-icon-box c-icon-box--accent-faded">
+                                <div class="c-icon-box__icon"
+                                    style="mask: url(../dist/public/img/icons/netflix.min.svg)">
+                                </div>
+                            </div>
+                            <p>Netflix</p>
+                        </div>
+
+                        <div class="c-card__price-box">
+                            <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
+                            <p>Płatność za 15 dni</p>
+                        </div>
+                        <p class="c-card__action"><a href="#">Anuluj subskrybcje</a></p>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card__title-box">
+                            <div class="c-icon-box c-icon-box--accent-faded">
+                                <div class="c-icon-box__icon"
+                                    style="mask: url(../dist/public/img/icons/spotify.min.svg)">
+                                </div>
+                            </div>
+                            <p>Spotify</p>
+                        </div>
+
+                        <div class="c-card__price-box">
+                            <p><span class="u-emphasize--faded">8 zł</span> /miesiąc</p>
+                            <p>Płatność co miesiąc</p>
+                        </div>
+                        <p class="c-card__action"><a href="#">Dodaj subskrybcje</a></p>
+                    </div>
+                    <div class="c-card">
+                        <div class="c-card__title-box">
+                            <div class="c-icon-box c-icon-box--accent-faded">
+                                <div class="c-icon-box__icon"
+                                    style="mask: url(../dist/public/img/icons/disney.min.svg)">
+                                </div>
+                            </div>
+                            <p>Disney+</p>
+                        </div>
+
+                        <div class="c-card__price-box">
+                            <p><span class="u-emphasize--faded">7 zł</span> /miesiąc</p>
+                            <p>Płatność co miesiąc</p>
+                        </div>
+                        <p class="c-card__action"><a href="#">Dodaj subskrybcje</a></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="l-column-right">
+            <section class="c-transactions">
+                <h2 class="c-transactions__header">Historia <br>transakcji</h2>
+                <div class="c-transactions__buttons">
+                    <button class="c-transactions__button u-colorize">Wszystko</button>
+                    <button class="c-transactions__button">Doładowania</button>
+                    <button class="c-transactions__button">Płatności</button>
+                </div>
+                <div class="c-table">
+                    <div class="c-table__record">
+                        <div class="c-icon-box--success">
+                            <div class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Cz. 23.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Wpłata</p>
+                            <p><span class="u-emphasize--success">+12</span> zł</p>
+                        </div>
+                    </div>
+                    <div class="c-table__record">
+                        <div class="c-icon-box--error">
                             <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
                             </div>
                         </div>
-                        <p>Netflix</p>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Wt. 21.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Spłata</p>
+                            <p><span class="u-emphasize--error">-16</span> zł</p>
+                        </div>
                     </div>
-
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
-                        <p>Płatność za 15 dni</p>
-                    </div>
-                    <p class="c-card__action"><a href="#">Anuluj subskrybcje</a></p>
-                </div>
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
-                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/spotify.min.svg)">
+                    <div class="c-table__record">
+                        <div class="c-icon-box--error">
+                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
                             </div>
                         </div>
-                        <p>Spotify</p>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Wt. 21.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Spłata</p>
+                            <p><span class="u-emphasize--error">-16</span> zł</p>
+                        </div>
                     </div>
-
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">8 zł</span> /miesiąc</p>
-                        <p>Płatność co miesiąc</p>
-                    </div>
-                    <p class="c-card__action"><a href="#">Dodaj subskrybcje</a></p>
-                </div>
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
-                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/disney.min.svg)">
+                    <div class="c-table__record">
+                        <div class="c-icon-box--success">
+                            <div class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
                             </div>
                         </div>
-                        <p>Disney+</p>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Cz. 23.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Wpłata</p>
+                            <p><span class="u-emphasize--success">+12</span> zł</p>
+                        </div>
                     </div>
+                    <div class="c-table__record">
+                        <div class="c-icon-box--error">
+                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Wt. 21.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Spłata</p>
+                            <p><span class="u-emphasize--error">-16</span> zł</p>
+                        </div>
+                    </div>
+                    <div class="c-table__record">
+                        <div class="c-icon-box--success">
+                            <div class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Cz. 23.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Wpłata</p>
+                            <p><span class="u-emphasize--success">+12</span> zł</p>
+                        </div>
+                    </div>
+                    <div class="c-table__record">
+                        <div class="c-icon-box--success">
+                            <div class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Cz. 23.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Wpłata</p>
+                            <p><span class="u-emphasize--success">+12</span> zł</p>
+                        </div>
+                    </div>
+                    <div class="c-table__record">
+                        <div class="c-icon-box--error">
+                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Wt. 21.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Spłata</p>
+                            <p><span class="u-emphasize--error">-16</span> zł</p>
+                        </div>
+                    </div>
+                    <div class="c-table__record">
+                        <div class="c-icon-box--success">
+                            <div class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Cz. 23.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Wpłata</p>
+                            <p><span class="u-emphasize--success">+12</span> zł</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">7 zł</span> /miesiąc</p>
-                        <p>Płatność co miesiąc</p>
-                    </div>
-                    <p class="c-card__action"><a href="#">Dodaj subskrybcje</a></p>
-                </div>
-            </div>
-        </section>
-
-        <section class="c-transactions">
-            <h2>Historia<br>transakcji</h2>
-            <div class="c-transactions__buttons">
-                <button class="c-transactions__button u-colorize">Wszystko</button>
-                <button class="c-transactions__button">Doładowania</button>
-                <button class="c-transactions__button">Płatności</button>
-            </div>
-            <div class="c-table">
-                <div class="c-table__record">
-                    <div class="c-icon-box--success">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Cz. 23.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Wpłata</p>
-                        <p><span class="u-emphasize--success">+12</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--error">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Wt. 21.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Spłata</p>
-                        <p><span class="u-emphasize--error">-16</span> zł</p>
-                    </div>
-                </div>
-
-                <div class="c-table__record">
-                    <div class="c-icon-box--error">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Wt. 21.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Spłata</p>
-                        <p><span class="u-emphasize--error">-16</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--success">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Cz. 23.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Wpłata</p>
-                        <p><span class="u-emphasize--success">+12</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--error">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Wt. 21.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Spłata</p>
-                        <p><span class="u-emphasize--error">-16</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--success">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Cz. 23.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Wpłata</p>
-                        <p><span class="u-emphasize--success">+12</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--success">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Cz. 23.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Wpłata</p>
-                        <p><span class="u-emphasize--success">+12</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--error">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Wt. 21.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">42</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Spłata</p>
-                        <p><span class="u-emphasize--error">-16</span> zł</p>
-                    </div>
-                </div>
-                <div class="c-table__record">
-                    <div class="c-icon-box--success">
-                        <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                        </div>
-                    </div>
-                    <div class="c-table__info">
-                        <p class="c-table__date">Cz. 23.11.2023</p>
-                        <p class="c-table__title">Stan konta</p>
-                        <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
-                    </div>
-                    <div class="c-table__cash-flow">
-                        <p>Wpłata</p>
-                        <p><span class="u-emphasize--success">+12</span> zł</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </main>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
