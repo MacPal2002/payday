@@ -2,54 +2,15 @@
 <html lang="pl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- @include 'fonts.kit' -->
-    <link rel="stylesheet" type="text/css" href="../dist/public/assets/slick/slick.css" />
-    <link rel="stylesheet" href="../dist/public/css/main.min.css">
+    <title>User</title>
+    <!-- @include 'head.kit' -->
 </head>
 
 <body>
-    <nav class="c-nav">
-        <div class="c-nav__top c-nav__top--mobile">
-            <h1>PayDay</h1>
-            <!-- <p>PayDay</p> -->
-            <!-- @include 'components/hamburger.kit' -->
-        </div>
-        <div class="c-nav__panel">
-            <div>
-                <p>Odnośniki</p>
-                <ul>
-                    <li><a href="https://github.com/MacPal2002/payday" target="_blank">Github</a></li>
-                    <li><a href="https://threepi.geekgalaxy.com/" target="_blank">Threepi</a></li>
-                    <li><a href="/admin.html">Admin</a></li>
-                </ul>
-            </div>
-            <div>
-                <p>Twórcy</p>
-                <ul>
-                    <li><a href="https://github.com/MacPal2002" target="_blank">Maciej Palenica</a></li>
-                    <li><a href="https://github.com/DanielCachro" target="_blank">Daniel Cachro</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- @include 'components/nav.kit' -->
     <main>
         <div class="l-column-left">
-            <section class="c-balance" id="balance">
-                <div class="c-icon-box">
-                    <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                    </div>
-                    <p class="c-balance__welcome-text"><span class="u-colorize--faded">Witaj👋</span><br>Daniel
-                        <p />
-                </div>
-                <div class="c-balance__amount">
-                    <h2>Stan Konta</h2>
-                    <p><span class="u-emphasize">39</span> zł</p>
-                </div>
-                <div class="c-balance__decorative-block"></div>
-            </section>
+            <!-- @include 'components/balance.kit' -->
 
             <section class="c-subscriptions" id="subscriptions">
                 <p class="c-subscriptions__header">Zarządzaj <br>subskrypcjami</p>
@@ -264,10 +225,7 @@
 
 
     </main>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="../dist/public/assets/slick/slick.js"></script>
-    <script src="../dist/public/js/main.min.js"></script>
+    <!-- @include 'scripts.kit' -->
 </body>
 
 </html>

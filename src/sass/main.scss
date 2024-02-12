@@ -201,6 +201,7 @@ main {
 .c-card {
 	height: 19.2rem;
 	width: 19.2rem;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -247,12 +248,79 @@ main {
 			text-underline-offset: 0.5rem;
 		}
 	}
+
+	&__dialog-box {
+		opacity: 0;
+
+		width: 9.6rem;
+		height: fit-content;
+		position: absolute;
+		right: 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.8rem;
+		border-radius: 12px;
+		background-color: $background-900;
+
+		button {
+			font-size: 1.2rem;
+			padding-left: 1.6rem;
+			background: none;
+			border: none;
+			color: $primary;
+		}
+
+		button:first-child {
+			padding-top: 1.6rem;
+			color: $error;
+		}
+
+		button:last-child {
+			padding-bottom: 1.6rem;
+		}
+	}
+
+	&__button {
+		position: absolute;
+		right: 1rem;
+		bottom: 1.2rem;
+		margin-top: 2.4rem;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 2.4rem;
+			height: 2.4rem;
+			background-color: $background-600;
+			opacity: 0;
+			display: block;
+			border-radius: 100%;
+
+			transition: 0.3s opacity;
+		}
+
+		&:hover::before {
+			opacity: 0.9;
+		}
+
+		.c-icon-box__icon {
+			background-color: $primary;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 .slick-slide {
 	margin-right: 1.6rem;
 	height: 19.2rem;
 	width: 19.2rem;
+}
+
+.slick-list {
+	overflow: visible;
 }
 
 .c-transactions {

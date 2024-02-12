@@ -147,8 +147,14 @@
 		overflow-y: scroll;
 	}
 
-	.c-card:last-child {
-		margin-bottom: 3.2rem;
+	.c-card {
+		&__dialog-box {
+			background-color: $background-600;
+		}
+
+		&:last-child {
+			margin-bottom: 3.2rem;
+		}
 	}
 
 	.c-transactions {
