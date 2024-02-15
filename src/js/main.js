@@ -1,7 +1,11 @@
 window.addEventListener('DOMContentLoaded', () => {
-	// Declarations - mobile nav
+	// Declarations
+	// nav
 	const hamburger = document.querySelector('.c-hamburger')
 	const navPanelMobile = document.querySelector('.c-nav__panel')
+	// slick
+	const cards = $('.l-cards')
+	const mediaQuery = window.matchMedia('(max-width: 880px)')
 
 	// Mobile nav
 	hamburger.addEventListener('click', e => {
@@ -12,9 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	})
 
 	// Slick
-	const cards = $('.l-cards')
-	const mediaQuery = window.matchMedia('(max-width: 880px)')
-
 	const handleSwitchSlick = e => {
 		if (e.matches) {
 			cards.slick({

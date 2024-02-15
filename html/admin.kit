@@ -8,114 +8,47 @@
 
 <body>
     <!-- @include 'components/nav.kit' -->
+    <main>
+        <div class="l-column-left">
+            <!-- @include 'components/balance.kit' -->
+
+            <section class="c-subscriptions" id="subscriptions">
+                <p class="c-subscriptions__header">Zarządzaj <br>subskrypcjami</p>
+                <div class="c-subscriptions__heading-box">
+                    <h2>Aktywne subskrypcje</h2>
+                    <p><span class="u-emphasize">16 zł</span> miesięcznie</p>
+                </div>
+                <div class="l-cards">
+                    <div class="c-card">
+                        <div class="c-card__title-box">
+                            <div class="c-icon-box c-icon-box--accent-faded">
+                                <div class="c-icon-box__icon"
+                                    style="mask: url(../dist/public/img/icons/netflix.min.svg)">
+                                </div>
+                            </div>
+                            <p>Netflix</p>
+                        </div>
+
+                        <div class="c-card__price-box">
+                            <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
+                            <p>Trzy wolne miejsca</p>
+                        </div>
+                        <div class="c-card__button">
+                            <div class="c-dialog-box">
+                                <button type="button">Usuń</button>
+                                <button type="button">Edytuj</button>
+                                <button type="button">Anuluj</button>
+                            </div>
+                            <button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
     <!-- @include 'scripts.kit' -->
+    <script src="../dist/public/js/admin.min.js"></script>
 </body>
-<main>
-    <div class="l-column-left">
-        <!-- @include 'components/balance.kit' -->
-
-        <section class="c-subscriptions" id="subscriptions">
-            <p class="c-subscriptions__header">Zarządzaj <br>subskrypcjami</p>
-            <div class="c-subscriptions__heading-box">
-                <h2>Aktywne subskrypcje</h2>
-                <p><span class="u-emphasize">16 zł</span> miesięcznie</p>
-            </div>
-            <div class="l-cards">
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
-                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                            </div>
-                        </div>
-                        <p>Netflix</p>
-                    </div>
-
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
-                        <p>Trzy wolne miejsca</p>
-                    </div>
-                    <div class="c-card__button">
-                        <div class="c-card__dialog-box">
-                            <button type="button">Usuń</button>
-                            <button type="button">Edytuj</button>
-                            <button type="button">Anuluj</button>
-                        </div>
-                        <button type="button" class="c-icon-box__icon"
-                            style="mask: url(../dist/public/img/icons/dots.min.svg)"></button>
-                    </div>
-                </div>
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
-                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                            </div>
-                        </div>
-                        <p>Netflix</p>
-                    </div>
-
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
-                        <p>Trzy wolne miejsca</p>
-                    </div>
-                    <div class="c-card__button">
-                        <div class="c-card__dialog-box">
-                            <button type="button">Usuń</button>
-                            <button type="button">Edytuj</button>
-                            <button type="button">Anuluj</button>
-                        </div>
-                        <button type="button" class="c-icon-box__icon"
-                            style="mask: url(../dist/public/img/icons/dots.min.svg)"></button>
-                    </div>
-                </div>
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
-                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                            </div>
-                        </div>
-                        <p>Netflix</p>
-                    </div>
-
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
-                        <p>Trzy wolne miejsca</p>
-                    </div>
-                    <div class="c-card__button">
-                        <div class="c-card__dialog-box">
-                            <button type="button">Usuń</button>
-                            <button type="button">Edytuj</button>
-                            <button type="button">Anuluj</button>
-                        </div>
-                        <button type="button" class="c-icon-box__icon"
-                            style="mask: url(../dist/public/img/icons/dots.min.svg)"></button>
-                    </div>
-                </div>
-                <div class="c-card">
-                    <div class="c-card__title-box">
-                        <div class="c-icon-box c-icon-box--accent-faded">
-                            <div class="c-icon-box__icon" style="mask: url(../dist/public/img/icons/netflix.min.svg)">
-                            </div>
-                        </div>
-                        <p>Netflix</p>
-                    </div>
-
-                    <div class="c-card__price-box">
-                        <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
-                        <p>Trzy wolne miejsca</p>
-                    </div>
-                    <div class="c-card__button">
-                        <div class="c-card__dialog-box">
-                            <button type="button">Usuń</button>
-                            <button type="button">Edytuj</button>
-                            <button type="button">Anuluj</button>
-                        </div>
-                        <button type="button" class="c-icon-box__icon"
-                            style="mask: url(../dist/public/img/icons/dots.min.svg)"></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</main>
 
 </html>

@@ -138,8 +138,8 @@ main {
 	flex-direction: column;
 	gap: 4.8rem;
 	padding: 2.4rem;
-
 	border-radius: 12px 12px 0 0;
+	overflow: scroll;
 	@include scrollbar();
 }
 
@@ -249,38 +249,6 @@ main {
 		}
 	}
 
-	&__dialog-box {
-		opacity: 0;
-
-		width: 9.6rem;
-		height: fit-content;
-		position: absolute;
-		right: 2rem;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.8rem;
-		border-radius: 12px;
-		background-color: $background-900;
-
-		button {
-			font-size: 1.2rem;
-			padding-left: 1.6rem;
-			background: none;
-			border: none;
-			color: $primary;
-		}
-
-		button:first-child {
-			padding-top: 1.6rem;
-			color: $error;
-		}
-
-		button:last-child {
-			padding-bottom: 1.6rem;
-		}
-	}
-
 	&__button {
 		position: absolute;
 		right: 1rem;
@@ -310,6 +278,41 @@ main {
 				cursor: pointer;
 			}
 		}
+	}
+}
+
+.c-dialog-box {
+	opacity: 0;
+	visibility: hidden;
+
+	width: 9.6rem;
+	height: fit-content;
+	position: absolute;
+	right: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.8rem;
+	border-radius: 12px;
+	background-color: $background-900;
+
+	transition: visibility 0.2s linear, opacity 0.2s;
+
+	button {
+		font-size: 1.2rem;
+		padding-left: 1.6rem;
+		background: none;
+		border: none;
+		color: $primary;
+	}
+
+	button:first-child {
+		padding-top: 1.6rem;
+		color: $error;
+	}
+
+	button:last-child {
+		padding-bottom: 1.6rem;
 	}
 }
 
@@ -446,6 +449,11 @@ main {
 		@extend .u-emphasize;
 		color: $accent-faded;
 	}
+}
+
+.u-visible {
+	opacity: 1;
+	visibility: visible;
 }
 
 @import 'breakpoints/small';
