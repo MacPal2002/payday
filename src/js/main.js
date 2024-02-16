@@ -3,6 +3,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	// nav
 	const hamburger = document.querySelector('.c-hamburger')
 	const navPanelMobile = document.querySelector('.c-nav__panel')
+	const main = document.querySelector('main')
+
 	// slick
 	const cards = $('.l-cards')
 	const mediaQuery = window.matchMedia('(max-width: 880px)')
@@ -10,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Mobile nav
 	hamburger.addEventListener('click', e => {
 		navPanelMobile.classList.toggle('c-nav__panel--opened')
+		main.classList.toggle('u-display-none')
 
 		const targetButton = e.target.closest('button')
 		targetButton.classList.toggle('h-opened')

@@ -40,10 +40,12 @@
 
 		&__panel {
 			visibility: visible;
+			opacity: 1;
+			width: auto;
+			height: auto;
 			font-size: 1.6rem;
 			padding-left: 0;
 			margin-left: 3.2rem;
-			opacity: 1;
 		}
 	}
 
@@ -60,6 +62,8 @@
 		&::-webkit-scrollbar-thumb {
 			border: 8px solid transparent;
 		}
+
+		@include scrollbar();
 	}
 
 	.c-balance {
