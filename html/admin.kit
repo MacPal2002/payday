@@ -3,6 +3,7 @@
 
 <head>
     <title>Admin</title>
+    <link href="../dist/public/assets/DataTables/datatables.min.css" rel="stylesheet">
     <!-- @include 'head.kit' -->
 </head>
 
@@ -46,8 +47,65 @@
                 </div>
             </section>
         </div>
+        <div class="l-column-right">
+            <section class="c-users" id="transactions">
+
+                <div class="l-columns">
+                    <div class="l-col-l c-users__header">
+                        <h2 class="c-users__heading">Użytkownicy <span class="u-colorize--gray-light">(31)</span></h2>
+                        <p class="c-users__user-count"><span class="u-emphasize">31</span> użytkowników</p>
+                    </div>
+                    <div class="l-col-r c-users__header">
+                        <button type="button"><span class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/add.min.svg)"></span>
+                            Dodaj nowego
+                        </button>
+                    </div>
+                </div>
+
+                <!-- <div class="c-table">
+                    <div class="c-table__record">
+                        <div class="c-icon-box--success">
+                            <div class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
+                            </div>
+                        </div>
+                        <div class="c-table__info">
+                            <p class="c-table__date">Cz. 23.11.2023</p>
+                            <p class="c-table__title">Stan konta</p>
+                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
+                        </div>
+                        <div class="c-table__cash-flow">
+                            <p>Wpłata</p>
+                            <p><span class="u-emphasize--success">+12</span> zł</p>
+                        </div>
+                    </div>
+                </div> -->
+
+                <table id="myTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 Data 1</td>
+                            <td>Row 2 Data 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </div>
     </main>
     <!-- @include 'scripts.kit' -->
+    <script src="../dist/public/assets/DataTables/datatables.min.js"></script>
     <script src="../dist/public/js/admin.min.js"></script>
 </body>
 

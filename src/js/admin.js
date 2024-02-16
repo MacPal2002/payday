@@ -26,4 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	document.body.addEventListener('click', ifClosePopup)
+
+	$(document).ready(function () {
+		$('#myTable').DataTable()
+	})
 })

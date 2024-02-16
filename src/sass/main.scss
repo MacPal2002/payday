@@ -286,18 +286,17 @@ main {
 .c-dialog-box {
 	opacity: 0;
 	visibility: hidden;
-
 	width: 9.6rem;
 	height: fit-content;
 	position: absolute;
-	right: 2rem;
+	right: 2.8rem;
+	bottom: 10%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.8rem;
 	border-radius: 12px;
 	background-color: $background-900;
-
 	transition: visibility 0.2s linear, opacity 0.2s;
 
 	button {
@@ -345,6 +344,51 @@ main {
 		margin-right: 0.8rem;
 		font-size: 1.6rem;
 		color: $primary;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $accent;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.c-users {
+	color: $primary;
+
+	.l-columns {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 1.6rem;
+	}
+
+	&__heading {
+		font-size: 1.8rem;
+	}
+
+	&__user-count {
+		display: none;
+	}
+
+	button {
+		background-color: transparent;
+		width: fit-content;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 1.6rem;
+		font-family: 'Urbanist', sans-serif;
+		border: none;
+		color: $primary;
+
+		span {
+			display: inline-block;
+			background-color: $accent;
+		}
 
 		&:hover,
 		&:focus,
@@ -432,6 +476,11 @@ main {
 		@extend .u-colorize;
 		color: $accent-faded;
 	}
+
+	&--gray-light {
+		@extend .u-colorize;
+		color: $gray-light;
+	}
 }
 
 .u-emphasize {
@@ -451,6 +500,11 @@ main {
 	&--faded {
 		@extend .u-emphasize;
 		color: $accent-faded;
+	}
+
+	&--gray-light {
+		@extend .u-emphasize;
+		color: $gray-light;
 	}
 }
 
