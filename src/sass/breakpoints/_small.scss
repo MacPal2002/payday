@@ -54,7 +54,6 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
-		align-content: center;
 		margin: $main-ctn-margin;
 		margin-left: 0;
 		padding: 4.8rem;
@@ -189,8 +188,6 @@
 		width: 47.2rem;
 		height: 68.6rem;
 		padding: 3.2rem;
-		border-radius: 12px;
-		background-color: $background-900;
 
 		.l-columns > .l-col-r {
 			display: flex;
@@ -217,7 +214,7 @@
 		}
 	}
 
-	.c-table {
+	.c-list {
 		left: 3.2rem;
 		width: 90%;
 		height: calc(100% - 11.5rem);

@@ -19,6 +19,24 @@
 	}
 }
 
+@mixin button-hover {
+	&:hover,
+	&:focus,
+	&:active {
+		color: $accent;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+@mixin moz-table-fix {
+	@-moz-document url-prefix() {
+		width: 98% !important;
+	}
+}
+
 *,
 *::before,
 *::after {
@@ -141,7 +159,7 @@ main {
 	gap: 4.8rem;
 	padding: 2.4rem;
 	border-radius: 12px 12px 0 0;
-	overflow: scroll;
+	overflow-y: scroll;
 	background-color: $background-600;
 }
 
@@ -283,40 +301,6 @@ main {
 	}
 }
 
-.c-dialog-box {
-	opacity: 0;
-	visibility: hidden;
-	width: 9.6rem;
-	height: fit-content;
-	position: absolute;
-	right: 2.8rem;
-	bottom: 10%;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.8rem;
-	border-radius: 12px;
-	background-color: $background-900;
-	transition: visibility 0.2s linear, opacity 0.2s;
-
-	button {
-		font-size: 1.2rem;
-		padding-left: 1.6rem;
-		background: none;
-		border: none;
-		color: $primary;
-	}
-
-	button:first-child {
-		padding-top: 1.6rem;
-		color: $error;
-	}
-
-	button:last-child {
-		padding-bottom: 1.6rem;
-	}
-}
-
 .slick-slide {
 	margin-right: 1.6rem;
 	height: 19.2rem;
@@ -345,20 +329,21 @@ main {
 		font-size: 1.6rem;
 		color: $primary;
 
-		&:hover,
-		&:focus,
-		&:active {
-			color: $accent;
-		}
-
-		&:hover {
-			cursor: pointer;
-		}
+		@include button-hover();
 	}
 }
 
 .c-users {
 	color: $primary;
+
+	position: absolute;
+	width: 100%;
+	height: 51.2rem;
+	left: 0;
+	right: 0;
+	border-radius: 12px;
+	background-color: $background-900;
+	padding: 2.4rem;
 
 	.l-columns {
 		display: flex;
@@ -373,36 +358,106 @@ main {
 	&__user-count {
 		display: none;
 	}
+}
 
-	button {
-		background-color: transparent;
-		width: fit-content;
-		display: flex;
-		align-items: center;
-		gap: 0.4rem;
-		font-size: 1.6rem;
-		font-family: 'Urbanist', sans-serif;
-		border: none;
-		color: $primary;
+.c-table {
+	font-size: 1.6rem;
+	border-collapse: collapse;
+
+	thead {
+		tr > th:last-child {
+			visibility: hidden;
+		}
+
+		tr > th {
+			border: none !important;
+		}
+	}
+
+	tbody > tr {
+		position: relative;
 
 		span {
-			display: inline-block;
-			background-color: $accent;
+			background-color: $primary;
 		}
+
+		&::after {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background-color: transparent;
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border-bottom: 0.4px solid $gray !important;
+
+			@include moz-table-fix();
+		}
+	}
+
+	&__money {
+		padding-right: 1.6rem !important;
+	}
+}
+
+.dt {
+	&-scroll-body {
+		@include scrollbar();
+		// margin-left: 0.4rem;
+	}
+
+	&-scroll-head {
+		border-bottom: 0.4px solid $primary !important;
+
+		@include moz-table-fix();
+	}
+
+	&-search {
+		display: flex;
+		justify-content: flex-end;
+		label {
+			visibility: hidden;
+		}
+
+		@include moz-table-fix();
+	}
+
+	&-input {
+		border: none !important;
+		border-bottom: 1px solid $primary !important;
+		border-radius: 0 !important;
+	}
+}
+
+.c-dropdown {
+	#dropdownBtn {
+		background-color: $primary;
+		width: 2.4rem;
+		height: 2.4rem;
+
+		@include button-hover();
 
 		&:hover,
 		&:focus,
 		&:active {
-			color: $accent;
+			background-color: $accent;
 		}
+	}
 
-		&:hover {
-			cursor: pointer;
+	.c-dialog-box {
+		bottom: -100px;
+		background-color: $background-600;
+		z-index: 1;
+
+		button {
+			background-color: transparent;
+			font-size: 1.6rem;
 		}
 	}
 }
 
-.c-table {
+.c-list {
 	position: absolute;
 	width: 100%;
 	height: 51.2rem;
@@ -449,6 +504,64 @@ main {
 		gap: 0.4rem;
 		margin-left: auto;
 		text-align: right;
+	}
+}
+
+.c-icon-btn {
+	background-color: transparent;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 2rem;
+	font-family: 'Urbanist', sans-serif;
+	border: none;
+	color: $primary;
+
+	span {
+		display: inline-block;
+		background-color: $accent;
+	}
+
+	@include button-hover();
+}
+
+.c-dialog-box {
+	opacity: 0;
+	visibility: hidden;
+	width: 9.6rem;
+	height: fit-content;
+	position: absolute;
+	right: 2.8rem;
+	bottom: 10%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.8rem;
+	border-radius: 12px;
+	background-color: $background-900;
+	transition: visibility 0.2s linear, opacity 0.2s;
+
+	button {
+		width: 100%;
+		padding-left: 1.6rem;
+		font-size: 1.6rem;
+		font-family: 'Urbanist', sans-serif;
+		background: none;
+		border: none;
+		text-align: left;
+		color: $primary;
+
+		&:first-child {
+			padding-top: 1.6rem;
+			color: $error;
+		}
+
+		&:last-child {
+			padding-bottom: 1.6rem;
+		}
+
+		@include button-hover();
 	}
 }
 
@@ -516,6 +629,10 @@ main {
 .u-display-none {
 	opacity: 0;
 	display: none;
+}
+
+.u-text-aling-right {
+	text-align: right;
 }
 
 @import 'breakpoints/small';

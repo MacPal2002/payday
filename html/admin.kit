@@ -34,7 +34,7 @@
                             <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
                             <p>Trzy wolne miejsca</p>
                         </div>
-                        <div class="c-card__button">
+                        <div class="c-card__button" id="dialogButton">
                             <div class="c-dialog-box">
                                 <button type="button">Usuń</button>
                                 <button type="button">Edytuj</button>
@@ -56,47 +56,37 @@
                         <p class="c-users__user-count"><span class="u-emphasize">31</span> użytkowników</p>
                     </div>
                     <div class="l-col-r c-users__header">
-                        <button type="button"><span class="c-icon-box__icon"
+                        <button type="button" class="c-icon-btn"><span class="c-icon-box__icon"
                                 style="mask: url(../dist/public/img/icons/add.min.svg)"></span>
                             Dodaj nowego
                         </button>
                     </div>
                 </div>
-
-                <!-- <div class="c-table">
-                    <div class="c-table__record">
-                        <div class="c-icon-box--success">
-                            <div class="c-icon-box__icon"
-                                style="mask: url(../dist/public/img/icons/wallet-basil.min.svg)">
-                            </div>
-                        </div>
-                        <div class="c-table__info">
-                            <p class="c-table__date">Cz. 23.11.2023</p>
-                            <p class="c-table__title">Stan konta</p>
-                            <p class="c-table__cash"><span class="u-emphasize">54</span> zł</p>
-                        </div>
-                        <div class="c-table__cash-flow">
-                            <p>Wpłata</p>
-                            <p><span class="u-emphasize--success">+12</span> zł</p>
-                        </div>
-                    </div>
-                </div> -->
-
-                <table id="myTable" class="display">
+                <table id="userTable" class="c-table" style="width: 100%;">
                     <thead>
                         <tr>
-                            <th>Column 1</th>
-                            <th>Column 2</th>
+                            <th style="width: 50%;">Nazwa</th>
+                            <th style="width: 30%;">Środki</th>
+                            <th style="width: 20%;">
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                        </tr>
-                        <tr>
-                            <td>Row 2 Data 1</td>
-                            <td>Row 2 Data 2</td>
+                            <td>Daniel</td>
+                            <td class="u-text-aling-right c-table__money">54 zł</td>
+                            <td class="u-text-aling-right">
+                                <div class="c-dropdown" id="dialogButton">
+                                    <div class="c-dialog-box">
+                                        <button type="button">Usuń</button>
+                                        <button type="button">Edytuj</button>
+                                        <button type="button">Anuluj</button>
+                                    </div>
+                                    <button type="button" class="c-icon-box__icon"
+                                        style="mask: url(../dist/public/img/icons/dropdown.min.svg)"
+                                        id="dropdownBtn"></button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
