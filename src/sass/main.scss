@@ -307,10 +307,6 @@ main {
 	width: 19.2rem;
 }
 
-// .slick-list {
-// 	overflow-y: visible;
-// }
-
 .c-transactions {
 	color: $primary;
 
@@ -565,11 +561,155 @@ main {
 	}
 }
 
-// Utility Classes
+.c-modal {
+	$border-radius: 12px;
+	position: absolute;
+	max-width: 38.4rem;
+	width: 100%;
+	height: fit-content;
+	top: 2.4rem;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 2.4rem;
+	border-radius: $border-radius;
+	z-index: 1;
 
-// .u-overflow-hidden {
-// 	overflow: hidden;
-// }
+	&__header,
+	&__body,
+	&__footer {
+		background-color: $background-600;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		padding: 0.8rem;
+		border-bottom: 1px solid $gray;
+		border-radius: $border-radius $border-radius 0 0;
+	}
+
+	&__body {
+		padding: 2.4rem 1.6rem;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		border-radius: 0 0 $border-radius $border-radius;
+		padding: 0 1.6rem 2.4rem 1.6rem;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		top: -2.4rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: $background-900;
+		opacity: 0.8;
+		z-index: -1;
+	}
+}
+
+.c-form {
+	&__icon-container {
+		margin-bottom: 4.8rem;
+
+		#icon {
+			display: none;
+		}
+
+		label {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1.2rem;
+			font-size: 1.6rem;
+			color: $accent;
+
+			.c-icon-box {
+				border-radius: 12px;
+				width: 4.8rem;
+				height: 4.8rem;
+			}
+		}
+	}
+	&__input-box {
+		display: flex;
+		flex-direction: column;
+
+		label {
+			color: $gray-light;
+			font-size: 1.2rem;
+		}
+
+		input {
+			background-color: transparent;
+			border: none;
+			border-bottom: 1px solid $primary;
+			height: 2.4rem;
+			margin-bottom: 1.6rem;
+			font-size: 1.6rem;
+			color: $primary;
+
+			&[type='number'] {
+				appearance: textfield;
+				-moz-appearance: textfield;
+				&::-webkit-outer-spin-button,
+				&::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
+				}
+			}
+
+			&::placeholder {
+				color: $gray-light;
+			}
+		}
+
+		.h-main-label {
+			padding-bottom: 0.8rem;
+		}
+
+		&--suffix {
+			@extend .c-form__input-box;
+			flex-direction: column;
+
+			input {
+				width: 100%;
+				margin: 0;
+				border: none;
+			}
+
+			.h-wrapping-label {
+				border-bottom: 1px solid $primary;
+				margin-bottom: 1.6rem;
+			}
+
+			span {
+				font-size: 1.6rem;
+				color: $gray-light;
+			}
+		}
+	}
+}
+
+.c-button {
+	width: 12.8rem;
+	height: 3.2rem;
+	font-size: 1.6rem;
+	font-family: 'Urbanist', sans-serif;
+	border: none;
+	border-radius: 0.8rem;
+	background-color: $accent;
+	color: $primary;
+}
+
+// Utility Classes
 
 .u-colorize {
 	font-weight: 400;

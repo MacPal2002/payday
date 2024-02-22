@@ -1,34 +1,37 @@
 window.addEventListener('DOMContentLoaded', () => {
-	const cardActionsBtn = document.querySelectorAll('#cardActionsBtn')
-	const dropdownBtn = document.querySelectorAll('#dropdownBtn')
+	// Dialog Boxes
+	const cardActionsBtns = document.querySelectorAll('#cardActionsBtn')
+	const dropdownBtns = document.querySelectorAll('#dropdownBtn')
 
-	const openPopup = e => {
+	const openDialogBox = e => {
 		const dialog = e.target.parentElement.querySelector('div[class*=dialog-box]')
 		dialog.classList.toggle('u-visible')
 	}
 
-	cardActionsBtn.forEach(btn => btn.addEventListener('click', openPopup))
-	dropdownBtn.forEach(btn => btn.addEventListener('click', openPopup))
+	for (const btn of [...cardActionsBtns, ...dropdownBtns]) {
+		btn.addEventListener('click', openDialogBox)
+	}
 
-	const ifClosePopup = e => {
+	const ifcloseDialogBox = e => {
 		const target = e.target
 
-		const closePopup = () => {
+		const closeDialogBox = () => {
 			const dialog = document.querySelector('div[class*=dialog-box].u-visible')
 			dialog !== null ? dialog.classList.remove('u-visible') : false
 		}
 
 		if (target.tagName === 'svg' || target.tagName === 'path') {
-			closePopup()
+			closeDialogBox()
 			return
 		}
 
 		const notCloseWhen = [!target.className.includes('u-visible'), !target.parentElement.id.includes('dialogButton')]
-		notCloseWhen.every(condition => condition === true) ? closePopup() : false
+		notCloseWhen.every(condition => condition === true) ? closeDialogBox() : false
 	}
 
-	document.body.addEventListener('click', ifClosePopup)
+	document.body.addEventListener('click', ifcloseDialogBox)
 
+	// Data Table
 	$(document).ready(function () {
 		$('#userTable').DataTable({
 			paging: false,
@@ -36,4 +39,18 @@ window.addEventListener('DOMContentLoaded', () => {
 			scrollY: '48rem',
 		})
 	})
+
+	// Inputs Suffixes
+	const inputs = document.querySelectorAll('.c-form__input-box--suffix input')
+
+	for (const input of inputs) {
+		input.addEventListener('input', resizeInput)
+		resizeInput.call(input)
+	}
+
+	function resizeInput() {
+		let extraWidth = 0
+		this.value.length === 0 ? (extraWidth = 1) : (extraWidth = 0)
+		this.style.width = this.value.length + extraWidth + 'ch'
+	}
 })

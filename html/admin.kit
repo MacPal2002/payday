@@ -14,6 +14,67 @@
             <!-- @include 'components/balance.kit' -->
 
             <section class="c-subscriptions" id="subscriptions">
+
+                <div class="c-modal">
+                    <div class="c-modal__header">
+                        <button type="button" class="c-modal__close c-icon-box__icon"
+                            style="mask: url(../dist/public/img/icons/cross.min.svg)"></button>
+                    </div>
+                    <div class="c-modal__body">
+
+                        <form action="#" class="c-form">
+                            <div class="c-form__icon-container">
+                                <label for="icon">
+                                    <div class="c-icon-box">
+                                        <div class="c-icon-box__icon"
+                                            style="mask: url(../dist/public/img/icons/netflix.min.svg)"></div>
+                                    </div>
+                                    Edytuj ikone
+                                </label>
+                                <input type="file" name="icon" id="icon" accept="image/svg+xml">
+                            </div>
+                            <div class="c-form__inputs">
+
+                                <div class="c-form__input-box">
+                                    <label for="subscriptionName" class="h-main-label">Nazwa subskrybcji</label>
+                                    <input type="text" name="subscriptionName" id="subscriptionName"
+                                        placeholder="Netflix">
+                                </div>
+                                <div class="c-form__input-box--suffix">
+                                    <label for="subscriptionCost" class="h-main-label">Koszt okresu</label>
+                                    <label for="subscriptionCost" class="h-wrapping-label">
+                                        <input type="number" name="subscriptionCost" id="subscriptionCost"
+                                            placeholder="0" required>
+                                        <span>zł</span>
+                                    </label>
+                                </div>
+                                <div class="c-form__input-box--suffix">
+                                    <label for="subscriptionPaymentFrequency" class="h-main-label">Płatność
+                                        co</label>
+                                    <label for="subscriptionPaymentFrequency" class="h-wrapping-label">
+                                        <input type="number" name="subscriptionPaymentFrequency"
+                                            id="subscriptionPaymentFrequency" placeholder="0" required>
+                                        <span>dni</span>
+                                    </label>
+                                </div>
+                                <div class="c-form__input-box--suffix">
+                                    <label for="subscriptionSlots" class="h-main-label">Ilość slotów</label>
+                                    <label for="subscriptionSlots" class="h-wrapping-label">
+                                        <input type="number" name="subscriptionSlots" id="subscriptionSlots"
+                                            placeholder="0" required>
+                                        <span>slotów</span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="c-modal__footer">
+                        <button type="button" class="c-modal__save c-button">Zapisz</button>
+                    </div>
+                </div>
+
                 <p class="c-subscriptions__header">Zarządzaj <br>subskrypcjami</p>
                 <div class="c-subscriptions__heading-box">
                     <h2>Aktywne subskrypcje</h2>
@@ -46,6 +107,7 @@
                     </div>
                 </div>
             </section>
+
         </div>
         <div class="l-column-right">
             <section class="c-users" id="transactions">
