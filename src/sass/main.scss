@@ -695,6 +695,88 @@ main {
 				color: $gray-light;
 			}
 		}
+
+		&--pillbox {
+			@extend .c-form__input-box;
+		}
+	}
+}
+
+.select2 {
+	.selection {
+		.select2 {
+			&-selection {
+				font-size: 1.2rem;
+				border: none;
+				border-bottom: 1px solid $primary;
+				border-radius: 0;
+				background-color: $background-600;
+
+				&__choice {
+					padding: 0.8rem 2rem 0.8rem 1.2rem;
+					margin-left: 0;
+					margin-right: 0.4rem;
+					background-color: $accent;
+					border: none;
+					border-radius: 0.8rem;
+
+					&__remove {
+						height: 1.6rem;
+						width: 1.6rem;
+						left: auto;
+						top: 0.7rem;
+						right: 0.6rem;
+						border: none;
+						color: $primary;
+						border-radius: 100%;
+						font-size: 1.2rem;
+						font-family: 'Urbanist', sans-serif;
+						font-weight: 400;
+						line-height: 1.2rem;
+						transition: background-color 0.3s;
+
+						&:hover,
+						&:focus,
+						&:active {
+							background-color: hsla(240, 11%, 7%, 0.6);
+							color: $primary;
+						}
+					}
+				}
+			}
+			&-search {
+				&__field {
+					color: $primary;
+					font-family: 'Urbanist', sans-serif;
+				}
+			}
+		}
+	}
+
+	&-dropdown {
+		top: 0.8rem;
+		background-color: $background-900;
+		border: none;
+		border-radius: 0.4rem !important;
+	}
+
+	&-results {
+		font-size: 1.2rem;
+		border-radius: 1.2rem;
+		color: $primary;
+		background-color: $background-900;
+
+		&__options {
+			@include scrollbar();
+			border-radius: 0.4rem;
+		}
+
+		&__option {
+			&--highlighted,
+			&--selected {
+				background-color: $accent !important;
+			}
+		}
 	}
 }
 
@@ -705,7 +787,8 @@ main {
 	font-family: 'Urbanist', sans-serif;
 	border: none;
 	border-radius: 0.8rem;
-	background-color: $accent;
+	// background-color: $accent;
+	background: $gradient;
 	color: $primary;
 }
 

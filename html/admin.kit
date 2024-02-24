@@ -4,6 +4,7 @@
 <head>
     <title>Admin</title>
     <link href="../dist/public/assets/DataTables/datatables.min.css" rel="stylesheet">
+    <link href="../dist/public/assets/select2/css/select2.min.css" rel="stylesheet" />
     <!-- @include 'head.kit' -->
 </head>
 
@@ -40,6 +41,7 @@
                                     <input type="text" name="subscriptionName" id="subscriptionName"
                                         placeholder="Netflix">
                                 </div>
+
                                 <div class="c-form__input-box--suffix">
                                     <label for="subscriptionCost" class="h-main-label">Koszt okresu</label>
                                     <label for="subscriptionCost" class="h-wrapping-label">
@@ -48,6 +50,7 @@
                                         <span>zł</span>
                                     </label>
                                 </div>
+
                                 <div class="c-form__input-box--suffix">
                                     <label for="subscriptionPaymentFrequency" class="h-main-label">Płatność
                                         co</label>
@@ -57,6 +60,7 @@
                                         <span>dni</span>
                                     </label>
                                 </div>
+
                                 <div class="c-form__input-box--suffix">
                                     <label for="subscriptionSlots" class="h-main-label">Ilość slotów</label>
                                     <label for="subscriptionSlots" class="h-wrapping-label">
@@ -64,6 +68,23 @@
                                             placeholder="0" required>
                                         <span>slotów</span>
                                     </label>
+                                </div>
+
+                                <div class="c-form__input-box--pillbox">
+                                    <label for="subscriptionUsers" class="h-main-label">Użytkownicy
+                                        <span>(3/6)</span></label>
+                                    <select name="subscriptionUsers" id="subscriptionUsers" multiple="multiple">
+                                        <option value="daniel" selected>Daniel</option>
+                                        <option value="maciek">Maciek</option>
+                                        <option value="bartek">Bartek</option>
+                                        <option value="julia">Julia</option>
+                                        <option value="stasek">Stasek</option>
+                                        <option value="marcin">Marcin</option>
+                                        <option value="kuba">Kuba</option>
+                                        <option value="przemek">Przemek</option>
+                                        <option value="kasia">Kasia</option>
+                                        <option value="edyta" selected>Edyta</option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -158,6 +179,8 @@
     </main>
     <!-- @include 'scripts.kit' -->
     <script src="../dist/public/assets/DataTables/datatables.min.js"></script>
+    <script src="../dist/public/assets/select2/js/select2.min.js"></script>
+    <script src="../dist/public/assets/select2/js/i18n/pl.js"></script>
     <script src="../dist/public/js/admin.min.js"></script>
 </body>
 

@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	})
 
 	// Inputs Suffixes
-	const inputs = document.querySelectorAll('.c-form__input-box--suffix input')
+	const inputs = document.querySelectorAll('div[class*=--suffix] input')
 
 	for (const input of inputs) {
 		input.addEventListener('input', resizeInput)
@@ -53,4 +53,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		this.value.length === 0 ? (extraWidth = 1) : (extraWidth = 0)
 		this.style.width = this.value.length + extraWidth + 'ch'
 	}
+
+	// Pillboxe's
+	$(document).ready(function () {
+		$('div[class*=--pillbox] select').select2()
+	})
 })
