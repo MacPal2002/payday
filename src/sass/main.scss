@@ -31,6 +31,25 @@
 	}
 }
 
+@mixin buttonHoverEffect($color, $opacity) {
+	&::before {
+		content: '';
+		position: absolute;
+		width: 2.4rem;
+		height: 2.4rem;
+		background-color: $color;
+		opacity: 0;
+		display: block;
+		border-radius: 100%;
+		transition: 0.3s opacity;
+	}
+
+	&:hover::before,
+	&:focus-within::before {
+		opacity: $opacity;
+	}
+}
+
 @mixin moz-table-fix {
 	@-moz-document url-prefix() {
 		width: 98% !important;
@@ -195,6 +214,8 @@ main {
 	&__header {
 		font-size: 1.8rem;
 		font-weight: 600;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	&__heading-box {
@@ -275,23 +296,7 @@ main {
 		bottom: 1.2rem;
 		margin-top: 2.4rem;
 
-		&::before {
-			content: '';
-			position: absolute;
-			width: 2.4rem;
-			height: 2.4rem;
-			background-color: $background-600;
-			opacity: 0;
-			display: block;
-			border-radius: 100%;
-
-			transition: 0.3s opacity;
-		}
-
-		&:hover::before {
-			opacity: 0.9;
-		}
-
+		@include buttonHoverEffect($background-600, 0.9);
 		.c-icon-box__icon {
 			background-color: $primary;
 			&:hover {
@@ -563,11 +568,11 @@ main {
 
 .c-modal {
 	$border-radius: 12px;
-	position: absolute;
+	position: fixed;
 	max-width: 38.4rem;
 	width: 100%;
 	height: fit-content;
-	top: 2.4rem;
+	top: -60rem;
 	left: 50%;
 	transform: translateX(-50%);
 	padding: 2.4rem;
@@ -587,6 +592,17 @@ main {
 		padding: 0.8rem;
 		border-bottom: 1px solid $gray;
 		border-radius: $border-radius $border-radius 0 0;
+	}
+
+	&__close {
+		width: 2.4rem;
+		height: 2.4rem;
+
+		@include buttonHoverEffect($background-900, 0.6);
+		&:hover,
+		button:hover {
+			cursor: pointer;
+		}
 	}
 
 	&__body {
@@ -613,17 +629,25 @@ main {
 		opacity: 0.8;
 		z-index: -1;
 	}
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.3s linear, opacity 0.3s, top 0.6s;
 }
 
 .c-form {
 	&__icon-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		margin-bottom: 4.8rem;
 
 		#icon {
-			display: none;
+			opacity: 0;
+			height: 0;
 		}
 
 		label {
+			width: fit-content;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -631,10 +655,23 @@ main {
 			font-size: 1.6rem;
 			color: $accent;
 
+			transition: transform 0.3s;
+
+			&:hover {
+				cursor: pointer;
+				transform: scale(1.075);
+			}
+
 			.c-icon-box {
 				border-radius: 12px;
 				width: 4.8rem;
 				height: 4.8rem;
+			}
+		}
+
+		input {
+			&:focus + label {
+				transform: scale(1.075);
 			}
 		}
 	}
@@ -780,6 +817,11 @@ main {
 	}
 }
 
+@property --gradient-percentage {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 98.31%;
+}
 .c-button {
 	width: 12.8rem;
 	height: 3.2rem;
@@ -788,8 +830,15 @@ main {
 	border: none;
 	border-radius: 0.8rem;
 	// background-color: $accent;
-	background: $gradient;
+	--gradient-percentage: 98.31%;
+	background: linear-gradient(315deg, #1b55f3 2.47%, #4b84f4 var(--gradient-percentage));
 	color: $primary;
+	transition: --gradient-percentage 0.3s;
+
+	&:hover {
+		--gradient-percentage: 36.47%;
+		cursor: pointer;
+	}
 }
 
 // Utility Classes
@@ -847,6 +896,15 @@ main {
 .u-visible {
 	opacity: 1;
 	visibility: visible;
+
+	&--from-top {
+		@extend .u-visible;
+		top: 2.4rem;
+	}
+}
+
+.u-overflow-hidden {
+	overflow: hidden;
 }
 
 .u-display-none {

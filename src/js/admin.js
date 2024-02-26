@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+	const body = document.querySelector('body')
 	// Dialog Boxes
 	const cardActionsBtns = document.querySelectorAll('#cardActionsBtn')
 	const dropdownBtns = document.querySelectorAll('#dropdownBtn')
@@ -40,6 +41,23 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 	})
 
+	// Remove element
+
+	let removeElementButtons = document.querySelectorAll('button[class^=remove]')
+
+	const removeElement = e => {
+		const targetElement = e.target.closest('[data-removable="true"]')
+
+		const potentialSlick = targetElement.parentElement.parentElement
+		potentialSlick.classList.contains('slick-slide') ? potentialSlick.remove() : false
+
+		targetElement.remove()
+	}
+
+	for (const button of removeElementButtons) {
+		button.addEventListener('click', removeElement)
+	}
+
 	// Inputs Suffixes
 	const inputs = document.querySelectorAll('div[class*=--suffix] input')
 
@@ -58,4 +76,55 @@ window.addEventListener('DOMContentLoaded', () => {
 	$(document).ready(function () {
 		$('div[class*=--pillbox] select').select2()
 	})
+
+	console.log($('div[class*=--pillbox] select').length)
+
+	// Modals
+
+	let modalsCloseButtons = document.querySelectorAll('.c-modal__close')
+	let modalsSaveButtons = document.querySelectorAll('.c-modal__save')
+
+	const closeModal = e => {
+		const targetModal = e.target.closest('.c-modal')
+		body.classList.remove('u-overflow-hidden')
+		targetModal.classList.remove('u-visible--from-top')
+	}
+
+	const saveModal = e => {
+		closeModal(e)
+	}
+
+	for (const button of modalsCloseButtons) {
+		button.addEventListener('click', closeModal)
+	}
+
+	for (const button of modalsSaveButtons) {
+		button.addEventListener('click', saveModal)
+	}
+
+	class modalInitializator {
+		constructor(addButtonSelector, editButtonsSelector, modalSelector) {
+			this.addButton = document.querySelector(addButtonSelector)
+			this.editButtons = document.querySelectorAll(editButtonsSelector)
+			this.modal = document.querySelector(modalSelector)
+		}
+	}
+
+	const modals = [
+		new modalInitializator('#addSubscription', '.editSubscription', '#subscriptionModal'),
+		new modalInitializator('#addUser', '.editUser', '#userModal'),
+	]
+
+	const showModal = ({modal}) => {
+		body.classList.add('u-overflow-hidden')
+		modal.classList.add('u-visible--from-top')
+	}
+
+	for (const modal of modals) {
+		for (const button of [modal.addButton, ...modal.editButtons]) {
+			button.addEventListener('click', () => {
+				showModal(modal)
+			})
+		}
+	}
 })
