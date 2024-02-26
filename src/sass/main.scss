@@ -19,6 +19,43 @@
 	}
 }
 
+@mixin button-hover {
+	&:hover,
+	&:focus,
+	&:active {
+		color: $accent;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+@mixin buttonHoverEffect($color, $opacity) {
+	&::before {
+		content: '';
+		position: absolute;
+		width: 2.4rem;
+		height: 2.4rem;
+		background-color: $color;
+		opacity: 0;
+		display: block;
+		border-radius: 100%;
+		transition: 0.3s opacity;
+	}
+
+	&:hover::before,
+	&:focus-within::before {
+		opacity: $opacity;
+	}
+}
+
+@mixin moz-table-fix {
+	@-moz-document url-prefix() {
+		width: 98% !important;
+	}
+}
+
 *,
 *::before,
 *::after {
@@ -52,6 +89,7 @@ body {
 		height: 1.2rem;
 		position: absolute;
 		bottom: -1.2rem;
+		z-index: 1;
 	}
 
 	&::before {
@@ -82,13 +120,17 @@ body {
 
 	&__panel {
 		visibility: hidden;
+		opacity: 0;
+		width: 100%;
+		min-height: calc(100vh - 6.2rem);
 		display: flex;
+		flex-direction: column;
 		position: absolute;
 		gap: 3.6rem;
-		flex-direction: column;
-		padding: 2.4rem;
-		padding-bottom: 3.2rem;
+		padding-left: 2.4rem;
 		font-size: 1.8rem;
+		background-color: $background-900;
+		transition: padding 0.3s, visibility 0.3s linear, opacity 0.15s;
 
 		& p {
 			color: $gray;
@@ -122,25 +164,22 @@ body {
 
 		&--opened {
 			visibility: visible;
-			position: relative;
-			width: 100%;
-			height: auto;
-			background-color: $background-900;
+			opacity: 1;
+			padding-top: 2.4rem;
 		}
 	}
 }
 
 main {
-	background-color: $background-600;
 	width: 100%;
 	height: calc(100vh - 6.2rem);
 	display: flex;
 	flex-direction: column;
 	gap: 4.8rem;
 	padding: 2.4rem;
-
 	border-radius: 12px 12px 0 0;
-	@include scrollbar();
+	overflow-y: scroll;
+	background-color: $background-600;
 }
 
 .l-column-left,
@@ -175,6 +214,8 @@ main {
 	&__header {
 		font-size: 1.8rem;
 		font-weight: 600;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	&__heading-box {
@@ -201,6 +242,7 @@ main {
 .c-card {
 	height: 19.2rem;
 	width: 19.2rem;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -247,6 +289,21 @@ main {
 			text-underline-offset: 0.5rem;
 		}
 	}
+
+	&__button {
+		position: absolute;
+		right: 1rem;
+		bottom: 1.2rem;
+		margin-top: 2.4rem;
+
+		@include buttonHoverEffect($background-600, 0.9);
+		.c-icon-box__icon {
+			background-color: $primary;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 .slick-slide {
@@ -273,19 +330,135 @@ main {
 		font-size: 1.6rem;
 		color: $primary;
 
-		&:hover,
-		&:focus,
-		&:active {
-			color: $accent;
-		}
+		@include button-hover();
+	}
+}
 
-		&:hover {
-			cursor: pointer;
-		}
+.c-users {
+	color: $primary;
+
+	position: absolute;
+	width: 100%;
+	height: 51.2rem;
+	left: 0;
+	right: 0;
+	border-radius: 12px;
+	background-color: $background-900;
+	padding: 2.4rem;
+
+	.l-columns {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 1.6rem;
+	}
+
+	&__heading {
+		font-size: 1.8rem;
+	}
+
+	&__user-count {
+		display: none;
 	}
 }
 
 .c-table {
+	font-size: 1.6rem;
+	border-collapse: collapse;
+
+	thead {
+		tr > th:last-child {
+			visibility: hidden;
+		}
+
+		tr > th {
+			border: none !important;
+		}
+	}
+
+	tbody > tr {
+		position: relative;
+
+		span {
+			background-color: $primary;
+		}
+
+		&::after {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background-color: transparent;
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border-bottom: 0.4px solid $gray !important;
+
+			@include moz-table-fix();
+		}
+	}
+
+	&__money {
+		padding-right: 1.6rem !important;
+	}
+}
+
+.dt {
+	&-scroll-body {
+		@include scrollbar();
+		// margin-left: 0.4rem;
+	}
+
+	&-scroll-head {
+		border-bottom: 0.4px solid $primary !important;
+
+		@include moz-table-fix();
+	}
+
+	&-search {
+		display: flex;
+		justify-content: flex-end;
+		label {
+			visibility: hidden;
+		}
+
+		@include moz-table-fix();
+	}
+
+	&-input {
+		border: none !important;
+		border-bottom: 1px solid $primary !important;
+		border-radius: 0 !important;
+	}
+}
+
+.c-dropdown {
+	#dropdownBtn {
+		background-color: $primary;
+		width: 2.4rem;
+		height: 2.4rem;
+
+		@include button-hover();
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $accent;
+		}
+	}
+
+	.c-dialog-box {
+		bottom: -100px;
+		background-color: $background-600;
+		z-index: 1;
+
+		button {
+			background-color: transparent;
+			font-size: 1.6rem;
+		}
+	}
+}
+
+.c-list {
 	position: absolute;
 	width: 100%;
 	height: 51.2rem;
@@ -301,6 +474,7 @@ main {
 		display: flex;
 		align-items: flex-end;
 		padding: 1.2rem 2.4rem;
+		padding-right: 1.2rem;
 		font-size: 1.6rem;
 	}
 
@@ -334,11 +508,340 @@ main {
 	}
 }
 
-// Utility Classes
+.c-icon-btn {
+	background-color: transparent;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 2rem;
+	font-family: 'Urbanist', sans-serif;
+	border: none;
+	color: $primary;
 
-// .u-overflow-hidden {
-// 	overflow: hidden;
-// }
+	span {
+		display: inline-block;
+		background-color: $accent;
+	}
+
+	@include button-hover();
+}
+
+.c-dialog-box {
+	opacity: 0;
+	visibility: hidden;
+	width: 9.6rem;
+	height: fit-content;
+	position: absolute;
+	right: 2.8rem;
+	bottom: 10%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.8rem;
+	border-radius: 12px;
+	background-color: $background-900;
+	transition: visibility 0.2s linear, opacity 0.2s;
+
+	button {
+		width: 100%;
+		padding-left: 1.6rem;
+		font-size: 1.6rem;
+		font-family: 'Urbanist', sans-serif;
+		background: none;
+		border: none;
+		text-align: left;
+		color: $primary;
+
+		&:first-child {
+			padding-top: 1.6rem;
+			color: $error;
+		}
+
+		&:last-child {
+			padding-bottom: 1.6rem;
+		}
+
+		@include button-hover();
+	}
+}
+
+.c-modal {
+	$border-radius: 12px;
+	position: fixed;
+	max-width: 38.4rem;
+	width: 100%;
+	height: fit-content;
+	top: -60rem;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 2.4rem;
+	border-radius: $border-radius;
+	z-index: 1;
+
+	&__header,
+	&__body,
+	&__footer {
+		background-color: $background-600;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		padding: 0.8rem;
+		border-bottom: 1px solid $gray;
+		border-radius: $border-radius $border-radius 0 0;
+	}
+
+	&__close {
+		width: 2.4rem;
+		height: 2.4rem;
+
+		@include buttonHoverEffect($background-900, 0.6);
+		&:hover,
+		button:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__body {
+		padding: 2.4rem 1.6rem;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		border-radius: 0 0 $border-radius $border-radius;
+		padding: 0 1.6rem 2.4rem 1.6rem;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		top: -2.4rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: $background-900;
+		opacity: 0.8;
+		z-index: -1;
+	}
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.3s linear, opacity 0.3s, top 0.6s;
+}
+
+.c-form {
+	&__icon-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 4.8rem;
+
+		#icon {
+			opacity: 0;
+			height: 0;
+		}
+
+		label {
+			width: fit-content;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1.2rem;
+			font-size: 1.6rem;
+			color: $accent;
+
+			transition: transform 0.3s;
+
+			&:hover {
+				cursor: pointer;
+				transform: scale(1.075);
+			}
+
+			.c-icon-box {
+				border-radius: 12px;
+				width: 4.8rem;
+				height: 4.8rem;
+			}
+		}
+
+		input {
+			&:focus + label {
+				transform: scale(1.075);
+			}
+		}
+	}
+	&__input-box {
+		display: flex;
+		flex-direction: column;
+
+		label {
+			color: $gray-light;
+			font-size: 1.2rem;
+		}
+
+		input {
+			background-color: transparent;
+			border: none;
+			border-bottom: 1px solid $primary;
+			height: 2.4rem;
+			margin-bottom: 1.6rem;
+			font-size: 1.6rem;
+			color: $primary;
+
+			&[type='number'] {
+				appearance: textfield;
+				-moz-appearance: textfield;
+				&::-webkit-outer-spin-button,
+				&::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
+				}
+			}
+
+			&::placeholder {
+				color: $gray-light;
+			}
+		}
+
+		.h-main-label {
+			padding-bottom: 0.8rem;
+		}
+
+		&--suffix {
+			@extend .c-form__input-box;
+			flex-direction: column;
+
+			input {
+				width: 100%;
+				margin: 0;
+				border: none;
+			}
+
+			.h-wrapping-label {
+				border-bottom: 1px solid $primary;
+				margin-bottom: 1.6rem;
+			}
+
+			span {
+				font-size: 1.6rem;
+				color: $gray-light;
+			}
+		}
+
+		&--pillbox {
+			@extend .c-form__input-box;
+		}
+	}
+}
+
+.select2 {
+	.selection {
+		.select2 {
+			&-selection {
+				font-size: 1.2rem;
+				border: none;
+				border-bottom: 1px solid $primary;
+				border-radius: 0;
+				background-color: $background-600;
+
+				&__choice {
+					padding: 0.8rem 2rem 0.8rem 1.2rem;
+					margin-left: 0;
+					margin-right: 0.4rem;
+					background-color: $accent;
+					border: none;
+					border-radius: 0.8rem;
+
+					&__remove {
+						height: 1.6rem;
+						width: 1.6rem;
+						left: auto;
+						top: 0.7rem;
+						right: 0.6rem;
+						border: none;
+						color: $primary;
+						border-radius: 100%;
+						font-size: 1.2rem;
+						font-family: 'Urbanist', sans-serif;
+						font-weight: 400;
+						line-height: 1.2rem;
+						transition: background-color 0.3s;
+
+						&:hover,
+						&:focus,
+						&:active {
+							background-color: hsla(240, 11%, 7%, 0.6);
+							color: $primary;
+						}
+					}
+				}
+			}
+			&-search {
+				&__field {
+					color: $primary;
+					font-family: 'Urbanist', sans-serif;
+				}
+			}
+		}
+	}
+
+	&-dropdown {
+		top: 0.8rem;
+		background-color: $background-900;
+		border: none;
+		border-radius: 0.4rem !important;
+	}
+
+	&-results {
+		font-size: 1.2rem;
+		border-radius: 1.2rem;
+		color: $primary;
+		background-color: $background-900;
+
+		&__options {
+			@include scrollbar();
+			border-radius: 0.4rem;
+		}
+
+		&__option {
+			&--highlighted,
+			&--selected {
+				background-color: $accent !important;
+			}
+		}
+	}
+}
+
+@property --gradient-percentage {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 98.31%;
+}
+.c-button {
+	width: 12.8rem;
+	height: 3.2rem;
+	font-size: 1.6rem;
+	font-family: 'Urbanist', sans-serif;
+	border: none;
+	border-radius: 0.8rem;
+	// background-color: $accent;
+	--gradient-percentage: 98.31%;
+	background: linear-gradient(315deg, #1b55f3 2.47%, #4b84f4 var(--gradient-percentage));
+	color: $primary;
+	transition: --gradient-percentage 0.3s;
+
+	&:hover {
+		--gradient-percentage: 36.47%;
+		cursor: pointer;
+	}
+}
+
+// Utility Classes
 
 .u-colorize {
 	font-weight: 400;
@@ -357,6 +860,11 @@ main {
 	&--faded {
 		@extend .u-colorize;
 		color: $accent-faded;
+	}
+
+	&--gray-light {
+		@extend .u-colorize;
+		color: $gray-light;
 	}
 }
 
@@ -378,6 +886,34 @@ main {
 		@extend .u-emphasize;
 		color: $accent-faded;
 	}
+
+	&--gray-light {
+		@extend .u-emphasize;
+		color: $gray-light;
+	}
+}
+
+.u-visible {
+	opacity: 1;
+	visibility: visible;
+
+	&--from-top {
+		@extend .u-visible;
+		top: 2.4rem;
+	}
+}
+
+.u-overflow-hidden {
+	overflow: hidden;
+}
+
+.u-display-none {
+	opacity: 0;
+	display: none;
+}
+
+.u-text-aling-right {
+	text-align: right;
 }
 
 @import 'breakpoints/small';

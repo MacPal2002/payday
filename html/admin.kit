@@ -2,15 +2,258 @@
 <html lang="pl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- @include 'fonts.kit' -->
-    <link rel="stylesheet" href="./css/main.min.css">
+    <title>Admin</title>
+    <link href="../dist/public/assets/DataTables/datatables.min.css" rel="stylesheet">
+    <link href="../dist/public/assets/select2/css/select2.min.css" rel="stylesheet" />
+    <!-- @include 'head.kit' -->
 </head>
 
 <body>
+    <!-- @include 'components/nav.kit' -->
+    <main>
+        <div class="l-column-left">
+            <!-- @include 'components/balance.kit' -->
 
+            <section class="c-subscriptions" id="subscriptions">
+
+                <div class="c-modal" id="subscriptionModal">
+                    <div class="c-modal__header">
+                        <div class="c-modal__close"><button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/cross.min.svg)"></button></div>
+                    </div>
+                    <div class="c-modal__body">
+
+                        <form action="#" class="c-form">
+                            <div class="c-form__icon-container">
+                                <input type="file" name="icon" id="icon" accept="image/svg+xml">
+                                <label for="icon">
+                                    <div class="c-icon-box">
+                                        <div class="c-icon-box__icon"
+                                            style="mask: url(../dist/public/img/icons/netflix.min.svg)"></div>
+                                    </div>
+                                    Edytuj ikone
+                                </label>
+                            </div>
+                            <div class="c-form__inputs">
+
+                                <div class="c-form__input-box">
+                                    <label for="subscriptionName" class="h-main-label">Nazwa subskrybcji</label>
+                                    <input type="text" name="subscriptionName" id="subscriptionName"
+                                        placeholder="Netflix">
+                                </div>
+
+                                <div class="c-form__input-box--suffix">
+                                    <label for="subscriptionCost" class="h-main-label">Koszt okresu</label>
+                                    <label for="subscriptionCost" class="h-wrapping-label">
+                                        <input type="number" name="subscriptionCost" id="subscriptionCost"
+                                            placeholder="0" required>
+                                        <span>zł</span>
+                                    </label>
+                                </div>
+
+                                <div class="c-form__input-box--suffix">
+                                    <label for="subscriptionPaymentFrequency" class="h-main-label">Płatność
+                                        co</label>
+                                    <label for="subscriptionPaymentFrequency" class="h-wrapping-label">
+                                        <input type="number" name="subscriptionPaymentFrequency"
+                                            id="subscriptionPaymentFrequency" placeholder="0" required>
+                                        <span>dni</span>
+                                    </label>
+                                </div>
+
+                                <div class="c-form__input-box--suffix">
+                                    <label for="subscriptionSlots" class="h-main-label">Ilość slotów</label>
+                                    <label for="subscriptionSlots" class="h-wrapping-label">
+                                        <input type="number" name="subscriptionSlots" id="subscriptionSlots"
+                                            placeholder="0" required>
+                                        <span>slotów</span>
+                                    </label>
+                                </div>
+
+                                <div class="c-form__input-box--pillbox">
+                                    <label for="subscriptionUsers" class="h-main-label">Użytkownicy
+                                        <span>(3/6)</span></label>
+                                    <select name="subscriptionUsers" id="subscriptionUsers" multiple="multiple">
+                                        <option value="daniel" selected>Daniel</option>
+                                        <option value="maciek">Maciek</option>
+                                        <option value="bartek">Bartek</option>
+                                        <option value="julia">Julia</option>
+                                        <option value="stasek">Stasek</option>
+                                        <option value="marcin">Marcin</option>
+                                        <option value="kuba">Kuba</option>
+                                        <option value="przemek">Przemek</option>
+                                        <option value="kasia">Kasia</option>
+                                        <option value="edyta" selected>Edyta</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="c-modal__footer">
+                        <button type="button" class="c-modal__save c-button">Zapisz</button>
+                    </div>
+                </div>
+
+                <div class="c-subscriptions__header">
+                    <p>Subskrybcje</p>
+                    <button type="button" class="c-icon-btn" id="addSubscription"><span class="c-icon-box__icon"
+                            style="mask: url(../dist/public/img/icons/add.min.svg)"></span>
+                        Dodaj nową
+                    </button>
+                </div>
+                <div class="c-subscriptions__heading-box">
+                    <h2>Aktywne subskrypcje</h2>
+                    <p><span class="u-emphasize">16 zł</span> miesięcznie</p>
+                </div>
+                <div class="l-cards">
+                    <div class="c-card" data-removable="true">
+                        <div class="c-card__title-box">
+                            <div class="c-icon-box c-icon-box--accent-faded">
+                                <div class="c-icon-box__icon"
+                                    style="mask: url(../dist/public/img/icons/netflix.min.svg)">
+                                </div>
+                            </div>
+                            <p>Netflix</p>
+                        </div>
+
+                        <div class="c-card__price-box">
+                            <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
+                            <p>Trzy wolne miejsca</p>
+                        </div>
+                        <div class="c-card__button" id="dialogButton">
+                            <div class="c-dialog-box">
+                                <button type="button" class="removeSubscription">Usuń</button>
+                                <button type="button" class="editSubscription">Edytuj</button>
+                                <button type="button">Anuluj</button>
+                            </div>
+                            <button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
+                        </div>
+                    </div>
+                    <div class="c-card" data-removable="true">
+                        <div class="c-card__title-box">
+                            <div class="c-icon-box c-icon-box--accent-faded">
+                                <div class="c-icon-box__icon"
+                                    style="mask: url(../dist/public/img/icons/netflix.min.svg)">
+                                </div>
+                            </div>
+                            <p>Netflix</p>
+                        </div>
+
+                        <div class="c-card__price-box">
+                            <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
+                            <p>Trzy wolne miejsca</p>
+                        </div>
+                        <div class="c-card__button" id="dialogButton">
+                            <div class="c-dialog-box">
+                                <button type="button" class="removeSubscription">Usuń</button>
+                                <button type="button" class="editSubscription">Edytuj</button>
+                                <button type="button">Anuluj</button>
+                            </div>
+                            <button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="l-column-right">
+            <section class="c-users" id="transactions">
+
+                <div class="c-modal" id="userModal">
+                    <div class="c-modal__header">
+                        <div class="c-modal__close"><button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/cross.min.svg)"></button></div>
+                    </div>
+                    <div class="c-modal__body">
+
+                        <form action="#" class="c-form">
+                            <div class="c-form__inputs">
+
+                                <div class="c-form__input-box">
+                                    <label for="userName" class="h-main-label">Nazwa użytkownika</label>
+                                    <input type="text" name="userName" id="userName" placeholder="Wprowadź nazwe">
+                                </div>
+
+                                <div class="c-form__input-box--suffix">
+                                    <label for="userBalance" class="h-main-label">Koszt okresu</label>
+                                    <label for="userBalance" class="h-wrapping-label">
+                                        <input type="number" name="userBalance" id="userBalance" placeholder="0"
+                                            required>
+                                        <span>zł</span>
+                                    </label>
+                                </div>
+
+                                <div class="c-form__input-box--pillbox">
+                                    <label for="userSubscriptions" class="h-main-label">Subskrybcje</label>
+                                    <select name="userSubscriptions" id="userSubscriptions" multiple="multiple">
+                                        <option value="daniel" selected>Netflix</option>
+                                        <option value="maciek">Spotify</option>
+                                        <option value="bartek">Disney+</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="c-modal__footer">
+                        <button type="button" class="c-modal__save c-button">Zapisz</button>
+                    </div>
+                </div>
+
+                <div class="l-columns">
+                    <div class="l-col-l c-users__header">
+                        <h2 class="c-users__heading">Użytkownicy <span class="u-colorize--gray-light">(31)</span></h2>
+                        <p class="c-users__user-count"><span class="u-emphasize">31</span> użytkowników</p>
+                    </div>
+                    <div class="l-col-r c-users__header">
+                        <button type="button" class="c-icon-btn" id="addUser"><span class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/add.min.svg)"></span>
+                            Dodaj nowego
+                        </button>
+                    </div>
+                </div>
+                <table id="userTable" class="c-table" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Nazwa</th>
+                            <th style="width: 30%;">Środki</th>
+                            <th style="width: 20%;">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-removable="true">
+                            <td>Daniel</td>
+                            <td class="u-text-aling-right c-table__money">54 zł</td>
+                            <td class="u-text-aling-right">
+                                <div class="c-dropdown" id="dialogButton">
+                                    <div class="c-dialog-box">
+                                        <button type="button" class="removeUser">Usuń</button>
+                                        <button type="button" class="editUser">Edytuj</button>
+                                        <button type="button">Anuluj</button>
+                                    </div>
+                                    <button type="button" class="c-icon-box__icon"
+                                        style="mask: url(../dist/public/img/icons/dropdown.min.svg)"
+                                        id="dropdownBtn"></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </div>
+    </main>
+    <!-- @include 'scripts.kit' -->
+    <script src="../dist/public/assets/DataTables/datatables.min.js"></script>
+    <script src="../dist/public/assets/select2/js/select2.min.js"></script>
+    <script src="../dist/public/assets/select2/js/i18n/pl.js"></script>
+    <script src="../dist/public/js/admin.min.js"></script>
 </body>
 
 </html>
