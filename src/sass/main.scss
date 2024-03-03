@@ -56,6 +56,22 @@
 	}
 }
 
+@mixin blue-dot-before {
+	&::before {
+		$leftValue: -0.8rem;
+		content: '';
+		display: inline-block;
+		width: 2.4rem;
+		height: 2.4rem;
+		position: relative;
+		top: 0.5rem;
+		left: $leftValue;
+		margin-left: calc(3.2rem - $leftValue);
+		border-radius: 100%;
+		background-color: $accent;
+	}
+}
+
 *,
 *::before,
 *::after {
@@ -73,6 +89,25 @@ html {
 
 body {
 	background-color: $background-900;
+}
+
+.c-icon-btn {
+	background-color: transparent;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 2rem;
+	font-family: 'Urbanist', sans-serif;
+	border: none;
+	color: $primary;
+
+	span {
+		display: inline-block;
+		background-color: $accent;
+	}
+
+	@include button-hover();
 }
 
 .c-nav {
@@ -170,7 +205,35 @@ body {
 	}
 }
 
-main {
+.c-logout-button {
+	font-size: 1.6rem;
+	transition: color 0.3s;
+
+	span {
+		background-color: $primary;
+		transition: background-color 0.3s;
+	}
+
+	&:hover span {
+		background-color: $accent;
+	}
+
+	&--mobile {
+		@extend .c-logout-button;
+		display: flex;
+		font-size: 1.8rem;
+	}
+
+	&--desktop {
+		@extend .c-logout-button;
+		display: none;
+		position: absolute;
+		bottom: 0;
+		margin-left: 3.2rem;
+	}
+}
+
+.c-app-main {
 	width: 100%;
 	height: calc(100vh - 6.2rem);
 	display: flex;
@@ -182,11 +245,23 @@ main {
 	background-color: $background-600;
 }
 
+.l-authorize-main {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
 .l-column-left,
 .l-column-right {
 	display: flex;
 	flex-direction: column;
 	gap: 4.8rem;
+}
+
+.l-jusify-center {
+	display: flex;
+	flex-direction: column;
 }
 
 .c-balance {
@@ -398,14 +473,29 @@ main {
 	}
 
 	&__money {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.4rem;
 		padding-right: 1.6rem !important;
+
+		p {
+			margin-top: 0.1rem;
+		}
+
+		button {
+			&:hover,
+			&:focus {
+				cursor: pointer;
+				background-color: $accent;
+			}
+		}
 	}
 }
 
 .dt {
 	&-scroll-body {
 		@include scrollbar();
-		// margin-left: 0.4rem;
 	}
 
 	&-scroll-head {
@@ -506,25 +596,6 @@ main {
 		margin-left: auto;
 		text-align: right;
 	}
-}
-
-.c-icon-btn {
-	background-color: transparent;
-	width: fit-content;
-	display: flex;
-	align-items: center;
-	gap: 0.4rem;
-	font-size: 2rem;
-	font-family: 'Urbanist', sans-serif;
-	border: none;
-	color: $primary;
-
-	span {
-		display: inline-block;
-		background-color: $accent;
-	}
-
-	@include button-hover();
 }
 
 .c-dialog-box {
@@ -679,6 +750,18 @@ main {
 		display: flex;
 		flex-direction: column;
 
+		.h-main-label {
+			padding-bottom: 0.8rem;
+		}
+
+		.h-wrapping-label {
+			display: flex;
+			align-items: baseline;
+			gap: 0.4rem;
+			border-bottom: 1px solid $primary;
+			margin-bottom: 1.6rem;
+		}
+
 		label {
 			color: $gray-light;
 			font-size: 1.2rem;
@@ -708,10 +791,6 @@ main {
 			}
 		}
 
-		.h-main-label {
-			padding-bottom: 0.8rem;
-		}
-
 		&--suffix {
 			@extend .c-form__input-box;
 			flex-direction: column;
@@ -720,11 +799,6 @@ main {
 				width: 100%;
 				margin: 0;
 				border: none;
-			}
-
-			.h-wrapping-label {
-				border-bottom: 1px solid $primary;
-				margin-bottom: 1.6rem;
 			}
 
 			span {
@@ -755,7 +829,7 @@ main {
 					margin-right: 0.4rem;
 					background-color: $accent;
 					border: none;
-					border-radius: 0.8rem;
+					border-radius: 8px;
 
 					&__remove {
 						height: 1.6rem;
@@ -794,7 +868,7 @@ main {
 		top: 0.8rem;
 		background-color: $background-900;
 		border: none;
-		border-radius: 0.4rem !important;
+		border-radius: 4px !important;
 	}
 
 	&-results {
@@ -805,7 +879,7 @@ main {
 
 		&__options {
 			@include scrollbar();
-			border-radius: 0.4rem;
+			border-radius: 4px;
 		}
 
 		&__option {
@@ -822,14 +896,75 @@ main {
 	inherits: false;
 	initial-value: 98.31%;
 }
+
+.c-authorize {
+	margin-top: 12.8rem;
+	text-align: center;
+	color: $primary;
+
+	h1 {
+		margin-bottom: 3.2rem;
+		padding-left: 0.8rem;
+		font-size: 3rem;
+		font-weight: 600;
+		@include blue-dot-before();
+		&::before {
+			width: 3rem;
+			height: 3rem;
+			margin: 0;
+			margin-right: 0.4rem;
+		}
+	}
+
+	h2 {
+		margin: 3.2rem 0 4.8rem 0;
+		font-size: 2.4rem;
+		font-weight: 400;
+	}
+
+	&__form {
+		margin: 4.8rem 0 1.2rem 0;
+	}
+
+	&__input-box {
+		input {
+			width: 25.6rem;
+			height: 4.8rem;
+			margin-bottom: 1.2rem;
+			padding-left: 1.2rem;
+			font-family: 'Urbanist', sans-serif;
+			color: $primary;
+			background: none;
+			border: 1px solid $gray;
+			border-radius: 8px;
+
+			&::placeholder {
+				color: $gray;
+			}
+		}
+	}
+
+	button {
+		width: 25.6rem;
+		height: 4.8rem;
+		margin-top: 1.2rem;
+	}
+
+	&__footer {
+		font-size: 1.2rem;
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
 .c-button {
 	width: 12.8rem;
 	height: 3.2rem;
 	font-size: 1.6rem;
 	font-family: 'Urbanist', sans-serif;
 	border: none;
-	border-radius: 0.8rem;
-	// background-color: $accent;
+	border-radius: 8px;
 	--gradient-percentage: 98.31%;
 	background: linear-gradient(315deg, #1b55f3 2.47%, #4b84f4 var(--gradient-percentage));
 	color: $primary;

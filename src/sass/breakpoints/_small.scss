@@ -21,20 +21,7 @@
 
 			& h1 {
 				font-size: 2.4rem;
-			}
-
-			h1::before {
-				$leftValue: -0.8rem;
-				content: '';
-				display: inline-block;
-				width: 2.4rem;
-				height: 2.4rem;
-				position: relative;
-				top: 0.5rem;
-				left: $leftValue;
-				margin-left: calc(3.2rem - $leftValue);
-				border-radius: 100%;
-				background-color: $accent;
+				@include blue-dot-before();
 			}
 		}
 
@@ -49,7 +36,16 @@
 		}
 	}
 
-	main {
+	.c-logout-button {
+		&--mobile {
+			display: none;
+		}
+		&--desktop {
+			display: flex;
+		}
+	}
+
+	.c-app-main {
 		height: calc(100vh - ($main-ctn-margin * 2));
 		flex-direction: row;
 		flex-wrap: wrap;

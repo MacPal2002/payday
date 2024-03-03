@@ -103,9 +103,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	class modalInitializator {
-		constructor(addButtonSelector, editButtonsSelector, modalSelector) {
+		constructor(addButtonSelector, editButtonSelector, modalSelector) {
 			this.addButton = document.querySelector(addButtonSelector)
-			this.editButtons = document.querySelectorAll(editButtonsSelector)
+			this.editButtons = document.querySelectorAll(editButtonSelector)
 			this.modal = document.querySelector(modalSelector)
 		}
 	}
@@ -113,6 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	const modals = [
 		new modalInitializator('#addSubscription', '.editSubscription', '#subscriptionModal'),
 		new modalInitializator('#addUser', '.editUser', '#userModal'),
+		new modalInitializator('.addFunds', '.addFunds', '#addFundsModal'),
 	]
 
 	const showModal = ({modal}) => {
