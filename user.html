@@ -2,13 +2,13 @@
 <html lang="pl">
 
 <head>
-    <title>User</title>
+    <title>PayDay</title>
+    <link rel="stylesheet" type="text/css" href="../dist/public/assets/slick/slick.css" />
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../dist/public/assets/slick/slick.css" />
 <link rel="stylesheet" href="../dist/public/css/main.min.css">
 </head>
 
@@ -29,11 +29,17 @@
     </div>
     <div class="c-nav__panel">
         <div>
+            <p>Panele</p>
+            <ul>
+                <li><a href="/user.html">Użytkownik</a></li>
+                <li><a href="/admin.html">Admin</a></li>
+            </ul>
+        </div>
+        <div>
             <p>Odnośniki</p>
             <ul>
                 <li><a href="https://github.com/MacPal2002/payday" target="_blank">Github</a></li>
                 <li><a href="https://threepi.geekgalaxy.com/" target="_blank">Threepi</a></li>
-                <li><a href="/admin.html">Admin</a></li>
             </ul>
         </div>
         <div>
@@ -43,9 +49,12 @@
                 <li><a href="https://github.com/DanielCachro" target="_blank">Daniel Cachro</a></li>
             </ul>
         </div>
+        <button type="button" class="c-logout-button--mobile c-icon-btn">Wyloguj</button>
     </div>
+    <button type="button" class="c-logout-button--desktop c-icon-btn"><span class="c-icon-box__icon"
+            style="mask: url(../dist/public/img/icons/power-button.min.svg)"></span>Wyloguj</button>
 </nav>
-    <main>
+    <main class="c-app-main">
         <div class="l-column-left">
             <section class="c-balance" id="balance">
     <div class="c-icon-box">
@@ -82,7 +91,6 @@
                             <p><span class="u-emphasize--faded">16 zł</span> /miesiąc</p>
                             <p>Płatność za 15 dni</p>
                         </div>
-                        <p class="c-card__action"><a href="#">Anuluj subskrypcje</a></p>
                     </div>
                     <div class="c-card">
                         <div class="c-card__title-box">
@@ -98,7 +106,6 @@
                             <p><span class="u-emphasize--faded">8 zł</span> /miesiąc</p>
                             <p>Płatność co miesiąc</p>
                         </div>
-                        <p class="c-card__action"><a href="#">Dodaj subskrypcje</a></p>
                     </div>
                     <div class="c-card">
                         <div class="c-card__title-box">
@@ -114,7 +121,6 @@
                             <p><span class="u-emphasize--faded">7 zł</span> /miesiąc</p>
                             <p>Płatność co miesiąc</p>
                         </div>
-                        <p class="c-card__action"><a href="#">Dodaj subskrypcje</a></p>
                     </div>
                 </div>
             </section>

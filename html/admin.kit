@@ -2,15 +2,16 @@
 <html lang="pl">
 
 <head>
-    <title>Admin</title>
+    <title>PayDay | Admin</title>
     <link href="../dist/public/assets/DataTables/datatables.min.css" rel="stylesheet">
     <link href="../dist/public/assets/select2/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../dist/public/assets/slick/slick.css" />
     <!-- @include 'head.kit' -->
 </head>
 
 <body>
     <!-- @include 'components/nav.kit' -->
-    <main>
+    <main class="c-app-main">
         <div class="l-column-left">
             <!-- @include 'components/balance.kit' -->
 
@@ -123,13 +124,13 @@
                             <p>Trzy wolne miejsca</p>
                         </div>
                         <div class="c-card__button" id="dialogButton">
+                            <button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
                             <div class="c-dialog-box">
                                 <button type="button" class="removeSubscription">Usuń</button>
                                 <button type="button" class="editSubscription">Edytuj</button>
                                 <button type="button">Anuluj</button>
                             </div>
-                            <button type="button" class="c-icon-box__icon"
-                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
                         </div>
                     </div>
                     <div class="c-card" data-removable="true">
@@ -147,13 +148,13 @@
                             <p>Trzy wolne miejsca</p>
                         </div>
                         <div class="c-card__button" id="dialogButton">
+                            <button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
                             <div class="c-dialog-box">
                                 <button type="button" class="removeSubscription">Usuń</button>
                                 <button type="button" class="editSubscription">Edytuj</button>
                                 <button type="button">Anuluj</button>
                             </div>
-                            <button type="button" class="c-icon-box__icon"
-                                style="mask: url(../dist/public/img/icons/dots.min.svg)" id="cardActionsBtn"></button>
                         </div>
                     </div>
                 </div>
@@ -179,7 +180,7 @@
                                 </div>
 
                                 <div class="c-form__input-box--suffix">
-                                    <label for="userBalance" class="h-main-label">Koszt okresu</label>
+                                    <label for="userBalance" class="h-main-label">Środki</label>
                                     <label for="userBalance" class="h-wrapping-label">
                                         <input type="number" name="userBalance" id="userBalance" placeholder="0"
                                             required>
@@ -217,6 +218,32 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="c-modal" id="addFundsModal">
+                    <div class="c-modal__header">
+                        <div class="c-modal__close"><button type="button" class="c-icon-box__icon"
+                                style="mask: url(../dist/public/img/icons/cross.min.svg)"></button></div>
+                    </div>
+                    <div class="c-modal__body">
+
+                        <form action="#" class="c-form">
+                            <div class="c-form__inputs">
+                                <div class="c-form__input-box--suffix">
+                                    <label for="fundsToAdd" class="h-main-label">Doładuj środki</label>
+                                    <label for="fundsToAdd" class="h-wrapping-label">
+                                        <input type="number" name="fundsToAdd" id="fundsToAdd" placeholder="0" required>
+                                        <span>zł</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="c-modal__footer">
+                        <button type="button" class="c-modal__save c-button">Doładuj</button>
+                    </div>
+                </div>
+
                 <table id="userTable" class="c-table" style="width: 100%;">
                     <thead>
                         <tr>
@@ -229,17 +256,23 @@
                     <tbody>
                         <tr data-removable="true">
                             <td>Daniel</td>
-                            <td class="u-text-aling-right c-table__money">54 zł</td>
+                            <td class="u-text-aling-right c-table__money"><button type="button"
+                                    class="c-icon-box__icon addFunds"
+                                    style="mask: url(../dist/public/img/icons/add-outline.min.svg)"
+                                    id="dropdownBtn"></button>
+                                <p>54
+                                    zł</p>
+                            </td>
                             <td class="u-text-aling-right">
                                 <div class="c-dropdown" id="dialogButton">
+                                    <button type="button" class="c-icon-box__icon"
+                                        style="mask: url(../dist/public/img/icons/dropdown.min.svg)"
+                                        id="dropdownBtn"></button>
                                     <div class="c-dialog-box">
                                         <button type="button" class="removeUser">Usuń</button>
                                         <button type="button" class="editUser">Edytuj</button>
                                         <button type="button">Anuluj</button>
                                     </div>
-                                    <button type="button" class="c-icon-box__icon"
-                                        style="mask: url(../dist/public/img/icons/dropdown.min.svg)"
-                                        id="dropdownBtn"></button>
                                 </div>
                             </td>
                         </tr>
