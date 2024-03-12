@@ -298,7 +298,7 @@
 		"homedir-polyfill": "^1.0.3",
 		"hosted-git-info": "^2.8.9",
 		"http-errors": "^2.0.0",
-		"http-cache-semantics": "^3.8.1",
+		"http-cache-semantics": "^4.1.1",
 		"http-proxy": "^1.18.1",
 		"human-signals": "^2.1.0",
 		"iconv-lite": "^0.4.24",
