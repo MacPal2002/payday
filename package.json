@@ -609,7 +609,7 @@
 		"semver": "^6.3.0",
 		"semver-truncate": "^1.1.2",
 		"send": "^0.16.2",
-		"semver-regex": "^2.0.0",
+		"semver-regex": "^3.1.4",
 		"serve-static": "^1.13.2",
 		"server-destroy": "^1.0.1",
 		"serve-index": "^1.9.1",
